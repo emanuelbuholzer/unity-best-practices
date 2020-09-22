@@ -2,7 +2,18 @@
 
 ## Problem
 
+Dictionaries verwenden die Methode `Object.getHashCode(Object)` um den entsprechenden Hash Code für den Key des Dictionaries herauszufinden.
+Dieser Aufruf wird bei den gängigen Methoden wie z.B. `Dictionary.add(key, value)`, `Dictionary.tryGetValue(key)`, `Dictionary.remove(key)`, etc. betätigt.
 
+Die Methode `Object.getHashCode(Object)` verwendet hat einen Verweistyp als Parameter.
+Wird als Argument ein `enum` übergeben, welches intern als `int` und daher als Werttyp gehandhabt wird, entsteht Boxing und es wird pro Aufruf unnötigt Speicher auf dem Heap alloziert [[1]](#1).
+
+**Beispiel**:
+```csharp
+enum Key { a, b, c };
+
+Dictionary<Key, string> keyStringValueDict = new Dictionary<Key, string>();
+keyStringDictValue.add(Key.a, "Eine Value");
 ```
 
 ## Lösung
