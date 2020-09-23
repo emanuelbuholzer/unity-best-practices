@@ -2,9 +2,7 @@
 
 ## Problem
 
-Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte eine Referenzierung über getComponent() niemals in der Methode update() erfolgen.
-
-
+Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte ein Zugriff auf andere GameObjects niemals über über getComponent() in der Methode update() erfolgen.
 
 
 ## Lösung
