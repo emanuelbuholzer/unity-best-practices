@@ -20,7 +20,7 @@ Die daraus resultierenden Vorteile sind insbesondere[[3]](#3):
 ```
 * Lesbarkeit
 * Erweiterbarkeit
-* Wiederverwendbarkeit
+* Wiederverwendbarkeit / Erhöht Modularität
 ```
 
 
