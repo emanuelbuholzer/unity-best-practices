@@ -1,12 +1,12 @@
-# Verwenden eines IEqualityComperer bei der Verwendung von Enums in Dictionaries
+# Einsatz von kleinen Klassen 
 
 ## Problem
 
-Dictionaries verwenden die Methode `Object.getHashCode(Object)` um den entsprechenden Hash Code für den Key des Dictionaries herauszufinden.
-Dieser Aufruf wird bei den gängigen Methoden wie z.B. `Dictionary.add(key, value)`, `Dictionary.tryGetValue(key)`, `Dictionary.remove(key)`, etc. betätigt.
+Der Einsatz resp. die Implementation von Klassen die eine Anzahl von mehr als 100 Zeilen Code übersteigen sprechen meist für ein Refactoring.
+In Anlehnung an das Single Responsibilty Princip und der Aussage von Robert Martin (Uncle Bob): "eine Klasse sollte nur einen Grund haben, sich zu ändern", kann davon ausgegangen werden, dass die Klasse mehrere Softwareteile .
 
-Die Methode `Object.getHashCode(Object)` verwendet hat einen Verweistyp als Parameter.
-Wird als Argument ein `enum` übergeben, welches intern als `int` und daher als Werttyp gehandhabt wird, entsteht Boxing und es wird pro Aufruf unnötigt Speicher auf dem Heap alloziert [[1]](#1).
+
+D [[1]](#1).
 
 **Beispiel**:
 ```csharp
