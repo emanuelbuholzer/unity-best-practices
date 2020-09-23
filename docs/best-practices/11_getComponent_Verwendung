@@ -1,1 +1,18 @@
+# Vermeiden von getComponent-Aufrufen in der Update-Methode
+
+## Problem
+
+Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte eine Referenzierung über getComponent() niemals in der Methode update() erfolgen.
+
+
+
+
+## Lösung
+
+
+```
+
+## Referenzen
+
+<a id="1">[1]</a>
 
