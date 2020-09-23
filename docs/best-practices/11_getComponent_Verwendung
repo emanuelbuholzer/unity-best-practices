@@ -4,7 +4,9 @@
 
 Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte der Zugriff auf andere GameObjects niemals über über getComponent() in der Methode update() erfolgen.
 
-```
+**Beispiel**:
+```csharp
+
 
 ```
 
