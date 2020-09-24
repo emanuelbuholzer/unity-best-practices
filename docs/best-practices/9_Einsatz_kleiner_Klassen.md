@@ -9,19 +9,15 @@ In Anlehnung an das Single Responsibilty Princip[[2]](#2) und der Aussage von Ro
 
 Einsatz von kleinen, dafür vielen Klassen die folgende Grundsätze einhalten[[3]](#3):
 
-```
 * Jedes Modul oder jede Klasse sollte die Verantwortung eines einzelnen Teils einer Software tragen
 * Die Verantwortung der Klasse sollte vollständig innerhalb der Klasse gekapselt werden
 * Die Verantwortung aller Dienste sollten eng darauf ausgerichtet sein 
-```
 
 Die daraus resultierenden Vorteile sind insbesondere[[3]](#3):
 
-```
 * Lesbarkeit
 * Erweiterbarkeit
 * Wiederverwendbarkeit / Erhöht Modularität
-```
 
 
 ## Referenzen
