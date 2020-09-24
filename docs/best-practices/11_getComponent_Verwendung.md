@@ -15,7 +15,7 @@ Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte der Zugriff auf
 
 ## Lösung
 
-
+**Beispiel**
 ```csharp
 
 using UnityEngine;
