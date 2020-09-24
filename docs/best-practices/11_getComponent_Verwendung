@@ -8,6 +8,7 @@ Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte der Zugriff auf
 ```csharp
 
 
+
 ```
 
 
@@ -15,7 +16,24 @@ Da Aufrufe in der update-Methode sehr rechenintensiv sind sollte der Zugriff auf
 ## Lösung
 
 
+```csharp
+
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    void Start()
+    {
+        HingeJoint[] hinges = GetComponents<HingeJoint>();
+        for (int i = 0; i < hinges.Length; i++)
+        {
+            hinges[i].useSpring = false;
+        }
+    }
+}
+
 ```
+
 
 ## Referenzen
 
