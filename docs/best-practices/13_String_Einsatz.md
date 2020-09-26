@@ -2,7 +2,10 @@
 
 ## Problem
 
+Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem  sollte er immer überlegt erfolgen.
 
+
+Unity unterstütz zwar auch Refernzierung mittels Strings
 
 
 **Schlechtes Beispiel** :
@@ -15,6 +18,9 @@
 
 ## Lösung
 
+Generell sollte folgender Grundsatz eingehalten werden:
+
+### Verwenden Sie Strings ausschliesslich für Textausgaben
 
 
 **Gutes Beispiel**
