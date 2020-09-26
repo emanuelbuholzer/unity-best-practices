@@ -2,7 +2,9 @@
 
 ## Problem
 
-Managerklassen sollten naturgemäss nur einmal instanziert werden und auch szenenübergreifend erhalten bleiben. Es soll gewähleistet wreden, dass jeweils immer nur eien Instanz der Klasse existiert.
+Managerklassen sollten naturgemäss nur einmal instanziert werden und auch szenenübergreifend erhalten bleiben. Dafür eignet sich der Einsatz des Singleton-Pattern.
+Gemäss Singleton-Pattern soll gewähleistet werden, dass jeweils immer nur eine Instanz existiert.
+Wichtig bei der Verwendung der Singleton ist, dass die Instanzierung bereits in der Awake-Methode erfolgt.
 
 
 **Schlechtes Beispiel einer Implementation** :
@@ -21,35 +23,48 @@ public class PersistentManagerScript : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
             
     }
 
-
 ```
 
+Aufgrund der fehlenden Prüfung ob bereits eine Instanz existiert wird in jedem GameObject, dass das PersistentManagerScript aufruft eine zusätzliche Instanz erzeugt. 
 
 
 ## Lösung
 
-Die getComponent-Methode sollte in der Methode Start() aufgerufen werden.
-Die Methode Start() wird für den Frame aufgerufen, wenn ein Script aktivivert wird, bevor die Methode Update() erstmalig aufgerufen wird.
+Die Instanzierung in der Awake_Methode muss eien Prüfung beinhalten welche gewährleistet, dass weitere Instanzen sofort wieder zerstört werden. Damit wird gewähleistet, dass jeweils immer nur eine Instanz besteht. 
 
-**Beispiel**
+**Gutes Beispiel**
 ```csharp
 
 using UnityEngine;
 
-public class Example : MonoBehaviour
-{
-    void Start()
+public class PersistentManagerScript : MonoBehaviour
+
+    public static PersistentManagerScript Instance {get; private set}
+    
+    //irgendwelche Variablen die Werte der Managerklasse halten
+    //Bsp.
+    //public int Value;
+    
+    void Awake()
     {
-        HingeJoint[] hinges = GetComponents<HingeJoint>();
-        for (int i = 0; i < hinges.Length; i++)
+        if (Instance == null)
         {
-            hinges[i].useSpring = false;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+            
     }
-}
 
 ```
 
