@@ -1,4 +1,4 @@
-# Verwendung des Singleton-Pattern beim Einsatz von von Managerklassen 
+# Verwendung des Singleton-Pattern beim Einsatz von Managerklassen 
 
 ## Problem
 
@@ -76,7 +76,12 @@ public class PersistentManagerScript : MonoBehaviour
 
 ## Referenzen
 
-<a id="1">[1]</a>
-https://www.youtube.com/watch?v=CPKAgyp8cno
+[1]
+Youtube, 26. September 2020, Singletons in Unity
+Aufgerufen 26. September 2020 https://www.youtube.com/watch?v=CPKAgyp8cno
+
+[2]
+GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture
+Aufgerufen 20. September 2020 von 
 
 
