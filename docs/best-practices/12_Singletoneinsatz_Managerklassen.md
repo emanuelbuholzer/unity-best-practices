@@ -30,7 +30,7 @@ public class PersistentManagerScript : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); //Gewährleistet, dass die Instanz beim Szenenwechsel bestehen bleibt
+            DontDestroyOnLoad(gameObject); //Gewährleistet, dass die Instanz beim Szenenwechsel / Neuladen der Szene bestehen bleibt (Wenn erwünscht!)
         }
             
     }
