@@ -1,4 +1,4 @@
-# Einsatz von Strings, Tags und Constants
+# Einsatz von Strings, Tags und Constants beim Collider
 
 ## Problem
 
