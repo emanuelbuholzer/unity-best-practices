@@ -1,14 +1,11 @@
-# Einsatz von Strings
+# Einsatz von Strings, Tags und Constants
 
 ## Problem
 
-Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem  sollte er immer überlegt erfolgen.
+Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem sollte er immer überlegt erfolgen.
+Unity unterstützt zwar auch Referenzierung mittels Strings wie folgendes Beispiel zeigt
 
-
-Unity unterstütz zwar auch Refernzierung mittels Strings
-
-
-**Schlechtes Beispiel** :
+**Beispiel** :
 ```csharp
 
 
