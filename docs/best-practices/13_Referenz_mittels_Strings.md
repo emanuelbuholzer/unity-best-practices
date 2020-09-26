@@ -1,4 +1,4 @@
-# Referenzierung mittels Strings
+# Einsatz von Strings
 
 ## Problem
 
