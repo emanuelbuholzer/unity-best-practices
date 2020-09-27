@@ -35,8 +35,8 @@ Die Prüfung wie im obigen Beispiel durchzuführen erscheint einfach aber mit zu
 
 ## Lösung
 
-Unity bietet Tags an welche durch die Methode gameObject.compareTag(String name)[1] referenziert werden können. Dies bietet eine elegante Lösung in Abstimmung mit der von Unity angebotenen Hilsmittel an.
-Desweiteren können Tags einfach in Unity erstellt und per Layer Collison Matrix umgestellt werden[[1]].
+Unity bietet Tags an welche durch die Methode gameObject.compareTag(String name)[[1]](#1) referenziert werden können. Dies bietet eine elegante Lösung in Abstimmung mit der von Unity angebotenen Hilsmittel an.
+Desweiteren können Tags einfach in Unity erstellt und per Layer Collison Matrix umgestellt werden[[2]](#2).
 
 Es empfiehlt sich die Refernzierung wie folgt zu implementieren
 
@@ -62,10 +62,10 @@ public Class Player
 ## Referenzen
 
 <a id="1">[1]</a>
-Unity Documentation, 22. September 2020, Layer-based collision detection.<br /> 
-Aufgerufen 27. September 2020 von https://docs.unity3d.com/Manual/LayerBasedCollision.html
+Unity Documentation, 22. September 2020, GameObject.Find<br /> 
+Aufgerufen 27. September 2020 von https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
 
 <a id="2">[2]</a>
-Unity Documentation, 22. September 2020, Layer-based collision detection.<br /> 
+Unity Documentation, 22. September 2020, Layer-based collision detection<br /> 
 Aufgerufen 27. September 2020 von https://docs.unity3d.com/Manual/LayerBasedCollision.html
 
