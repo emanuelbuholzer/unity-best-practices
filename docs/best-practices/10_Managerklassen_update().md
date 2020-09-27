@@ -1,4 +1,4 @@
-# Vermeiden von Managerklassenaufrufen in der Update-Methode (noch zu bearbeiten da Referenz in Best Practice Liste falsch)
+# Vermeiden von Managerklassenreferenzierung in der Update-Methode
 
 ## Problem
 
