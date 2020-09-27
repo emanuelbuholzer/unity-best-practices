@@ -49,7 +49,7 @@ public Class Player
     {
         if(collision.gameObject.CompareTag("Bullet”))
         {
-            DoAnything();
+            DoSomething();
         }
     }
     
