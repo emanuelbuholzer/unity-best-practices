@@ -1,4 +1,4 @@
-# gameObject.Find(String name)
+# gameObject.Find(String name) (evtl. refactorign auf Collider Beispiel)
 
 ## Problem
 
