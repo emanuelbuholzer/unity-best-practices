@@ -41,7 +41,7 @@ Dem Aspekt des Refactoring ist bei dieser Anwendung besondere Beachtung zu schen
 
 Generell sollte folgender Grundsatz eingehalten werden:
 
-* Verwenden Sie Strings womöglich nur für Textausgaben
+* Verwenden Sie Strings wann immer möglich ausschliesslich für Textausgaben
 
 Unity bietet Tags an welche insbesondere beim Einsatz von Collider zu bevorzugen sind. Diese Tags können auch in der Unity Layer Collision Matrix einfach bearbeitet werden.
 Ausserdem wird beim Einsatz der Methode GameObject.FindWithTag(String name) eine UnityException ausgelöst wenn der Name nicht vorhanden ist. 
