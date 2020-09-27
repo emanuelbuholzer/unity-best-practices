@@ -28,10 +28,9 @@ public class ExampleClass : MonoBehaviour
 ```
 
 Im genannten Beispiel werden nur aktive GameObjects zurückgegeben. Wenn kein GameObject mit name gefunden werden kann, wird null zurückgegeben.
-Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie (name/name/Hand).
+Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie. Wenn der name ein '/' Zeichen enthält, durchläuft es die Hierarchie wie ein Pfadname.
 Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
-Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird..
-
+Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird.
 
 Dem Aspekt des Refactoring ist bei dieser Anwendung  besondere Beachtung zu schenken da der Aufwand sehr schnell anwächst.  
 
@@ -42,12 +41,21 @@ Generell sollte folgender Grundsatz eingehalten werden:
 
 * Verwenden Sie Strings womöglich nur für Textausgaben
 
+Unity bietet Tags an welche insbesondere beim Einsatz von Collider zu bevorzugen sind. Ausserdem wird beim Einsatz der Methode GameObject.FindWithTag(String name) eine UnityException ausgelöst wenn der Name nicht vorhanden ist. 
 
-**Gutes Beispiel**
+**Beispiel**
 ```csharp
+using UnityEngine;
 
-
-
+public Klasse ExampleClass: MonoBehaviour
+{
+    public GameObject hand;
+    
+    void Example ()
+    {
+        hand = GameObject.FindWithTag ("Hand"); 
+    }
+}
 ```
 
 
