@@ -4,7 +4,7 @@
 
 Collider sind ein massgebliches Element von Unity welches dazu dient, GameObjects mit anderen interagieren zu lassen. Um die Interaktion auszulösen müssen sich die Collider der beiden Gameobjects berühren und entsprechend eine Methode implementiert haben.
 
-Folgende Methoden werden dazu seitens Unity.Engine zur Verfügung gestellt:
+Folgende Methoden werden dazu seitens Unity zur Verfügung gestellt:
 
 * OnCollisionEnter(Collision collision) //Wird aufgerufen, wenn dieser Collider / Rigidbody einen anderen Rigidbody / Collider zu berührt
 * On CollisionStay(Collision collision) //Wird einmal pro Frame für jeden Collider / Rigidbody aufgerufen, der Starrkörper / Kollider berührt
