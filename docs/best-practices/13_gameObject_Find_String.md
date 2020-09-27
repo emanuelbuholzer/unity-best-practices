@@ -30,7 +30,7 @@ public class ExampleClass : MonoBehaviour
 Im genannten Beispiel werden nur aktive GameObjects zurückgegeben. Wenn kein GameObject mit name gefunden werden kann, wird null zurückgegeben.
 Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie. Wenn der name ein '/' Zeichen enthält, durchläuft es die Hierarchie wie ein Pfadname.
 Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
-Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird. Das heisst alle Methoden mit Find führen keinen rekursiven Abstieg in einer Transformationshierarchie durch.
+Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird. Alle Methoden mit .Find führen keinen rekursiven Abstieg in einer Transformationshierarchie durch.
 
 Dem Aspekt des Refactoring ist bei dieser Anwendung  besondere Beachtung zu schenken da der Aufwand sehr schnell anwächst.  
 
