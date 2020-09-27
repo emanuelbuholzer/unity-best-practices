@@ -51,12 +51,10 @@ Generell sollte folgender Grundsatz eingehalten werden:
 
 ## Referenzen
 
-[1]
-, 26. September 2020, Singletons in Unity
+[1]Unity Technologies, 16. September 2020, Unity Engine Classes, gameObject.Find(String name)
 Aufgerufen 26. September 2020 https://docs.unity3d.com/ScriptReference/GameObject.Find.html
 
-[2]
-GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture
+[2]GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture
 Aufgerufen 20. September 2020 von http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/
 
 
