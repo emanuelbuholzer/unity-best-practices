@@ -1,4 +1,4 @@
-# Vermeiden von Managerklassenreferenzierung in der Update-Methode
+#Managerklassenreferenzierung
 
 ## Problem
 
