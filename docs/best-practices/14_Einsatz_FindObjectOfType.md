@@ -14,7 +14,6 @@ Um einen Collider der Methode als Parameter zu übergeben soll eine Prüfung dur
 
 **Schlechtes Beispiel einer Colliderprüfung**:
 ```csharp
-
 public Class Player
 {
     // Irgendwelcher Code
@@ -42,7 +41,6 @@ Es empfiehlt sich die Refernzierung wie folgt zu implementieren
 
 **Beispiel**:
 ```csharp
-
 public Class Player
 {
     // Irgendwelcher Code
