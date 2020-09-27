@@ -28,8 +28,10 @@ public class ExampleClass : MonoBehaviour
 ```
 
 Im genannten Beispiel werden nur aktive GameObjects zurückgegeben. Wenn kein GameObject mit name gefunden werden kann, wird null zurückgegeben.
-Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie (*/*/Hand). Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
-Weiter wird jeweils nur das erste gefundene GameObject ausgegeben, weitere mit dem selben Namen werden vernachlässigt.
+Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie (name/name/Hand).
+Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
+Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird..
+
 
 Dem Aspekt des Refactoring ist bei dieser Anwendung  besondere Beachtung zu schenken da der Aufwand sehr schnell anwächst.  
 
