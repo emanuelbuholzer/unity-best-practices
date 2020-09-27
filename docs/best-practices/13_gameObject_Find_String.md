@@ -1,4 +1,4 @@
-# gameObject.Find(String name) (evtl. refactorign auf Collider Beispiel)
+# gameObject.Find(String name) (evtl. Refactoring da mit BP14 bereits naheliegend abgedeckt ==> Einsatz von Strings Allg.?)
 
 ## Problem
 
