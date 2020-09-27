@@ -1,23 +1,44 @@
-# Einsatz von Strings, Tags und Constants beim Collider
+# gameObject.Find(String name)
 
 ## Problem
 
-Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem sollte er immer überlegt erfolgen.
-Unity unterstützt zwar auch Referenzierung mittels Strings wie folgendes Beispiel zeigt
+Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem sollte er im Allgemeinen immer sehr überlegt erfolgen.
+Insbesondere wenn folgende Methode eingesetzt wird um Objekte zu referenzieren:
+
+```csharp
+gamemObject.Find(String name)
+```
 
 **Beispiel** :
 ```csharp
 
+using UnityEngine;
 
+
+public class ExampleClass : MonoBehaviour
+{
+    public GameObject hand;
+
+    void Example()
+    {
+        hand = GameObject.Find("Hand");
+    }
+
+}
 ```
 
+Im genannten Beispiel werden nur aktive GameObjects zurückgegeben. Wenn kein GameObject mit name gefunden werden kann, wird null zurückgegeben.
+Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie. Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
+Weiter wird jeweils nur das erste gefundene GameObject ausgegeben, weitere mit dem selben Namen werden vernachlässigt.
+
+Dem Aspekt des Refactoring ist bei dieser Anwendung  besondere Beachtung zu schenken da der Aufwand sehr schnell anwächst.  
 
 
 ## Lösung
 
 Generell sollte folgender Grundsatz eingehalten werden:
 
-### Verwenden Sie Strings ausschliesslich für Textausgaben
+* Verwenden Sie Strings womöglich nur für Textausgaben
 
 
 **Gutes Beispiel**
