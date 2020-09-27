@@ -3,7 +3,7 @@
 ## Problem
 
 Der Einsatz von Strings ist zwar in Unity sehr verbreitet, trotzdem sollte er im Allgemeinen immer sehr überlegt erfolgen.
-Insbesondere wenn folgende Methode eingesetzt wird um Objekte zu referenzieren:
+Insbesondere wenn die Methode gameObject.Find(String name) eingesetzt wird, um Objekte zu referenzieren:
 
 ```csharp
 gamemObject.Find(String name)
@@ -52,8 +52,8 @@ Generell sollte folgender Grundsatz eingehalten werden:
 ## Referenzen
 
 [1]
-Youtube, 26. September 2020, Singletons in Unity
-Aufgerufen 26. September 2020 https://www.youtube.com/watch?v=CPKAgyp8cno
+, 26. September 2020, Singletons in Unity
+Aufgerufen 26. September 2020 https://docs.unity3d.com/ScriptReference/GameObject.Find.html
 
 [2]
 GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture
