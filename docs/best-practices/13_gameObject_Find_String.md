@@ -43,7 +43,8 @@ Generell sollte folgender Grundsatz eingehalten werden:
 
 * Verwenden Sie Strings womöglich nur für Textausgaben
 
-Unity bietet Tags an welche insbesondere beim Einsatz von Collider zu bevorzugen sind. Ausserdem wird beim Einsatz der Methode GameObject.FindWithTag(String name) eine UnityException ausgelöst wenn der Name nicht vorhanden ist. 
+Unity bietet Tags an welche insbesondere beim Einsatz von Collider zu bevorzugen sind. Diese Tags können auch in der Unity Layer Collision Matrix einfach bearbeitet werden.
+Ausserdem wird beim Einsatz der Methode GameObject.FindWithTag(String name) eine UnityException ausgelöst wenn der Name nicht vorhanden ist. 
 
 **Beispiel**
 ```csharp
