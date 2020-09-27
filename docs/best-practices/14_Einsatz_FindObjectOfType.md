@@ -60,8 +60,8 @@ public Class Player
 ## Referenzen
 
 <a id="1">[1]</a>
-Unity Documentation, 22. September 2020, GameObject.Find<br /> 
-Aufgerufen 27. September 2020 von https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
+Unity Documentation, 22. September 2020, GameObject.FindWithTag<br /> 
+Aufgerufen 27. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.FindWithTag.html
 
 <a id="2">[2]</a>
 Unity Documentation, 22. September 2020, Layer-based collision detection<br /> 
