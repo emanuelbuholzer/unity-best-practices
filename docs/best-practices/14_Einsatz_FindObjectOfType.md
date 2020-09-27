@@ -2,7 +2,7 @@
 
 ## Problem
 
-Collider sind ein massgebliches Element von Unity welches dazu dient GameObjects mit anderen zu interagieren. Dazu müssen sich die Collider der beiden Gameobjects berühren.
+Collider sind ein massgebliches Element von Unity welches dazu dient, GameObjects mit anderen interagieren zu lassen. Um die Interaktion auszulösen müssen sich die Collider der beiden Gameobjects berühren und entsprechend eine Methode implementiert haben.
 
 Folgende Methoden werden dazu seitens Unity.Engine zur Verfügung gestellt:
 
@@ -18,13 +18,17 @@ using Unity.engine
 
 public Class Player
 {
+    // Irgendwelcher Code
+    
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.name == "Gun Bullet”)
+        if(collision.collider.name == "Bullet”)
         {
             DoSomething();
         }
     }
+    
+    // Irgendwelcher Code
 }
 ```
 Die Prüfung wie im obigen Beispiel durchzuführen erscheint einfach aber mit zunehmender Komplexität und Erweiterung des Spiels birgt dies Risiken und bei Änderungen einen zusätzlichen Refactoraufwand. 
@@ -35,22 +39,25 @@ Die Prüfung wie im obigen Beispiel durchzuführen erscheint einfach aber mit zu
 Unity bietet Tags an welche durch die Methode gameObject.compareTag(String name) referenziert werden können. Dies bietet eine elegante Lösung in Abstimmung mit der von Unity angebotenen Hilsmittel an.
 Desweiteren können Tags einfach in Unity erstellt und per Layer Collison Matrix umgestellt werden[[1]].
 
+Es empfiehlt sich die Refernzierung wie folgt zu implementieren
 
 **Beispiel**:
 ```csharp
-int j1 = 1;
-int j2 = 32;
+using Unity.engine
 
-// Irgendwelcher Code
-
-int[] jointAngles = new int[2]();
-jointAngles[0] = j1;
-jointAngles[1] = j2;
-
-// Irgendwelcher Code
-for(int i = 0; i < joingAngles.length; i+=1)
+public Class Player
 {
-    // Irgendwas damit machen
+    // Irgendwelcher Code
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Bullet”))
+        {
+            DoSomething();
+        }
+    }
+    
+    // Irgendwelcher Code
 }
 ```
 
