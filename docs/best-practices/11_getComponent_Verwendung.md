@@ -5,7 +5,7 @@
 Da Aufrufe in der Update-Methode sehr rechenintensiv sind, sollte der Zugriff auf andere GameObjects niemals über über getComponent() / getComponents() in der Methode update() erfolgen.
 Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig Ressourcen aufbraucht. 
 
-**Beispiel** generische Version der Methode:
+**Beispiel** generische Version der Methode[[1]](#1):
 ```csharp
 
 using UnityEngine;
@@ -55,4 +55,5 @@ public class Example : MonoBehaviour
 ## Referenzen
 
 <a id="1">[1]</a>
+https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
 
