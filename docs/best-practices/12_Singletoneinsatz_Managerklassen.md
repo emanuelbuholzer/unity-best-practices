@@ -1,4 +1,4 @@
-# Verwendung des Singleton-Pattern beim Einsatz von Managerklassen 
+# Verwendung des Singleton-Pattern bei der Implementierung von Managerklassen 
 
 ## Problem
 
