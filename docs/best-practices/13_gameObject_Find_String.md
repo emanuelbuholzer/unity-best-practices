@@ -32,14 +32,14 @@ Dies funktioniert ausserdem nur im selben Gameobject bzw. derselben Hierarchie. 
 Der Methodenaufruf ist sehr langsam und daher niemals in der Update-Methode zu verwenden.
 Weiter wird jeweils nur das erste gefundene GameObject ausgegeben. Wenn eine Szene mehrere GameObjects mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes GameObject zurückgegeben wird.
 
-Alle Methoden mit .Find führen keinen rekursiven Abstieg in einer Hierarchie durch.
+Der Aufruf von gameObject.Find.Find führt keinen rekursiven Abstieg in einer Hierarchie durch. Allgemein tut dies keine Methode welche die Referenzierung mittels .Find durchführt.
 
-Dem Aspekt des Refactoring ist bei dieser Anwendung besondere Beachtung zu schenken da der Aufwand sehr schnell anwächst.  
+Dem Aspekt des Refactoring ist bei dieser Anwendung besondere Beachtung zu schenken da der Aufwand dafür sehr schnell wachsen kann.  
 
 
 ## Lösung
 
-Generell sollte folgender Grundsatz eingehalten werden:
+Folgender Grundsatz sollte im Umgang mit Strings wenn immer möglich eingehalten werden:
 
 * Verwenden Sie Strings wann immer möglich ausschliesslich für Textausgaben
 
@@ -64,10 +64,10 @@ public Klasse ExampleClass: MonoBehaviour
 
 ## Referenzen
 
-[1]Unity Technologies, 16. September 2020, Unity Engine Classes, gameObject.Find(String name)
+[1]Unity Technologies, 16. September 2020, Unity Engine Classes, gameObject.Find(String name)<br/>
 Aufgerufen 26. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.Find.html
 
-[2]GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture
+[2]GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture<br/>
 Aufgerufen 20. September 2020 von http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/
 
 
