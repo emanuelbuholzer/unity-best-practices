@@ -7,7 +7,6 @@ Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig
 
 **Beispiel** generische Version der Methode[[1]](#1):
 ```csharp
-
 using UnityEngine;
 
 public class Example : MonoBehaviour
@@ -21,8 +20,6 @@ public class Example : MonoBehaviour
         }
     }
 }
-
-
 ```
 
 
@@ -30,11 +27,10 @@ public class Example : MonoBehaviour
 ## Lösung
 
 Die getComponent-Methode sollte in der Methode Start() aufgerufen werden.
-Die Methode Start() wird für den Frame aufgerufen, wenn ein Script aktivivert wird, bevor die Methode Update() erstmalig aufgerufen wird.
+Die Methode Start() wird für den Frame aufgerufen, wenn ein Script aktiviert wird, bevor die Methode Update() erstmalig aufgerufen wird.
 
 **Beispiel**
 ```csharp
-
 using UnityEngine;
 
 public class Example : MonoBehaviour
@@ -48,12 +44,12 @@ public class Example : MonoBehaviour
         }
     }
 }
-
 ```
 
 
 ## Referenzen
 
 <a id="1">[1]</a>
-https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
+Unity Dokumentation,22. September 2020, GameObject.GetComponent<br/>
+aufgerufen am 26. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
 
