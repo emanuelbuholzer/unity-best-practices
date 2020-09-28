@@ -3,7 +3,7 @@
 ## Problem
 
 Der Einsatz resp. die Implementation von Klassen welche die Anzahl von mehr als 100 Zeilen Code übersteigen sprechen meist für ein Refactoring der Klasse.
-In Anlehnung an das Single Responsibilty Princip[[2]](#2) und der Aussage von Robert Martin (Uncle Bob): "es sollte nie mehr als einen Grund geben eine Klasse zu ändern"[[1]](#1), kann davon ausgegangen werden, dass nicht nur ein Grund besteht die Klasse zu ändern.
+In Anlehnung an das Single Responsibilty Princip[[1]](#1) und der Aussage von Robert Martin (Uncle Bob): "es sollte nie mehr als einen Grund geben eine Klasse zu ändern"[[1]](#1), kann davon ausgegangen werden, dass nicht nur ein Grund besteht die Klasse zu ändern.
 
 ## Lösung
 
