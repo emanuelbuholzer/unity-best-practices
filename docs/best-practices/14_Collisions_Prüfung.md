@@ -35,7 +35,7 @@ Die Prüfung wie im obigen Beispiel durchzuführen erscheint einfach aber mit zu
 ## Lösung
 
 Unity bietet Tags an welche durch die Methode gameObject.compareTag(String name)[[2]](#2) referenziert werden können. Dies bietet eine elegante Lösung in Abstimmung mit der von Unity angebotenen Hilsmittel an.
-Desweiteren können Tags einfach in Unity erstellt und per Layer Collison Matrix umgestellt werden[[3]](#3).
+Werden Tags verwendet, welche in Unity einfach zu erstell sind, können Collisions per Layer Collison Matrix einfach verwaltet werden[[3]](#3).
 
 Es empfiehlt sich die Refernzierung wie folgt zu implementieren
 
