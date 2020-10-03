@@ -3,7 +3,7 @@
 ## Problem
 
 Da Aufrufe in der Update-Methode sehr rechenintensiv sind, sollte der Zugriff auf andere GameObjects niemals über über getComponent() / getComponents() in der Methode update() erfolgen.
-Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig Ressourcen aufbraucht. 
+Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig Ressourcen aufbraucht. Der Nachteil der MEthode GetComponent() ist, dass dies ein innerer Aufruf ist und entsprechend nut GameObject zurückgibt die dem GameObject auch tatsächlich angehängt sind.
 
 **Beispiel** generische Version der Methode[[1]](#1):
 ```csharp
