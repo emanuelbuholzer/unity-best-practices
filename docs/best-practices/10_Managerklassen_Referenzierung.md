@@ -12,7 +12,7 @@ Dazu gibt es bessere und schlechtere Möglichkeiten eine Managerklasse zu refere
 ## Optimmale Lösung
 
 Die Referenzierung erfolgt über den äusseren Aufruf GameObject.FindObjectOfType<>. Damit wird gewährleistet, dass im Gegensatz zur GetComponent<>-Methode auch ausserhalb der
-angehängten Gameobjects nach dem Objekt gesucht wird[[1]](#1).
+aktuellen Szene nach dem GameObject gesucht wird[[1]](#1).
 
 ```csharp
 using UnityEngine;
