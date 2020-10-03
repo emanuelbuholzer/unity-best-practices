@@ -12,7 +12,7 @@ Dazu gibt es bessere und schlechtere Möglichkeiten eine Managerklasse zu refere
 ## Optimmale Lösung
 
 Die Referenzierung erfolgt über den äusseren Aufruf GameObject.FindObjectOfType<>. Damit wird gewährleistet, dass im Gegensatz zur GetComponent<>-Methode auch ausserhalb der
-angehängten Gameobjects nach dem Objekt gesucht wird[[1]].
+angehängten Gameobjects nach dem Objekt gesucht wird[[1]](#1).
 
 ```csharp
 using UnityEngine;
@@ -37,9 +37,9 @@ public class ExampleClass : MonoBehaviour
 ## Referenzen
 
 <a id="1">[1]</a>
-stackoverflow, 003. Oktober 2020, GameObject.FindObjectOfType<>() vs GetComponent<>()
+stackoverflow, 003. Oktober 2020, GameObject.FindObjectOfType<>() vs GetComponent<>()</br>
 Aufgerufen 03. Oktober 2020 https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent
 
-[1]
+[2]
 Youtube, 26. September 2020, Singletons in Unity<br/>
 Aufgerufen 26. September 2020 https://www.youtube.com/watch?v=CPKAgyp8cno
