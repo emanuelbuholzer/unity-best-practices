@@ -1,4 +1,4 @@
-#Richtige Refernzierung von Managerklassen
+# Richtige Refernzierung von Managerklassen
 
 ## Problem
 
@@ -14,7 +14,7 @@ Dazu gibt es bessere und schlechtere Möglichkeiten eine Managerklasse zu refere
 Die Refrenzierung erfolgt über den äusseren Aufruf GameObject.FindObjectOfType<>. Damit wird gewährleistet, dass im Gegensatz zur GetComponent<>-Methode auch ausserhalb der
 angehängten Gameobjects nach dem Objekt gesucht wird.
 
-```csharpe
+``` csharpe
 using UnityEngine;
 using System.Collections;
 
