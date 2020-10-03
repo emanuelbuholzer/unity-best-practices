@@ -18,9 +18,9 @@ aktuellen Szene nach dem GameObject gesucht wird[[1]](#1).
 using UnityEngine;
 using System.Collections;
 
-// Search for any object of Type Camera,
-// if found print its name, else print a message
-// that says that it was not found.
+// suche nach einem Object vom Typ Camera
+// wenn gefunden, gib den Namen aus
+// oder gib den "No Camera object could be found" zurück
 public class ExampleClass : MonoBehaviour
 {
     void Start()
