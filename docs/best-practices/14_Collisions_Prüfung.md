@@ -2,7 +2,7 @@
 
 ## Problem
 
-Collider sind ein massgebliches Element von Unity welches dazu dient, GameObjects mit anderen mittels Collisions[[1]](#1) interagieren zu lassen. Um die Interaktion auszulösen müssen sich die Collider der beiden Gameobjects berühren und entsprechend eine Methode implementiert haben.
+Collider sind ein massgebliches Element von Unity welches dazu dient GameObjects mit anderen mittels Collisions[[1]](#1) interagieren zu lassen. Um die Interaktion auszulösen müssen sich die Collider der beiden Gameobjects berühren und entsprechend eine Methode implementiert haben.
 
 Folgende Methoden werden dazu seitens Unity zur Verfügung gestellt:
 
