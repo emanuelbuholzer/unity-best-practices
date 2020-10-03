@@ -41,5 +41,5 @@ stackoverflow, 03. März 2016, GameObject.FindObjectOfType<>() vs GetComponent<>
 Aufgerufen 03. Oktober 2020 https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent
 
 [2]
-Unityforum, 26. September 2020, Singletons in Unity<br/>
-Aufgerufen 26. September 2020 https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
+Unity Dokumentation, 29. September 2020, Singletons in Unity<br/>
+Aufgerufen 03. Okotber 2020 https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
