@@ -2,7 +2,7 @@
 
 ## Problem
 
-Managerklassen sind aufgrund Ihres Einsatzes nur einmalig zu referenzieren und über die Szene (manchmal auch szenenübergreifend vgl. BP) zu erhalten.
+Managerklassen sind aufgrund Ihres Einsatzes nur einmalig zu referenzieren und über die Szene (manchmal auch szenenübergreifend vgl. BP 12) zu erhalten.
 Dazu gibt es bessere und schlechtere Möglichkeiten eine Managerklasse zu referenzieren. Weiters spielt dabei die verwendete Methode zur Referenzierung eine wesentliche Rolle. 
 
 * Verwende immer GameObject.FindObjectOfType<>, niemals GetComponent<> für die Referenzierung von Managerklassen
