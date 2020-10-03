@@ -2,7 +2,7 @@
 
 ## Problem
 
-Managerklassen sollten naturgemäss nur einmal instanziert werden und auch szenenübergreifend erhalten bleiben. Dafür eignet sich der Einsatz des Singleton-Pattern besonders gut.
+Managerklassen sollten naturgemäss nur einmal instanziert werden und wenn erwünscht auch szenenübergreifend erhalten bleiben. Dafür eignet sich der Einsatz des Singleton-Pattern besonders gut.
 Gemäss dem Desingprinzip des Singleton-Pattern soll gewähleistet werden, dass jeweils immer nur eine Instanz existiert.
 Wichtig beim der Verwendung von Singletons sind folgende Aspekte:
 
