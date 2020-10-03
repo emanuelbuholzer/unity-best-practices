@@ -39,3 +39,6 @@ public class ExampleClass : MonoBehaviour
 <a id="1">[1]</a>
 
 
+[1]
+Youtube, 26. September 2020, Singletons in Unity<br/>
+Aufgerufen 26. September 2020 https://www.youtube.com/watch?v=CPKAgyp8cno
