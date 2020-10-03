@@ -37,9 +37,9 @@ public class ExampleClass : MonoBehaviour
 ## Referenzen
 
 <a id="1">[1]</a>
-stackoverflow, 003. Oktober 2020, GameObject.FindObjectOfType<>() vs GetComponent<>()</br>
+stackoverflow, 03. März 2016, GameObject.FindObjectOfType<>() vs GetComponent<>()<br/>
 Aufgerufen 03. Oktober 2020 https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent
 
 [2]
-Youtube, 26. September 2020, Singletons in Unity<br/>
-Aufgerufen 26. September 2020 https://www.youtube.com/watch?v=CPKAgyp8cno
+Unityforum, 26. September 2020, Singletons in Unity<br/>
+Aufgerufen 26. September 2020 https://docs.unity3d.com/ScriptReference/Object.FindObjectOfType.html
