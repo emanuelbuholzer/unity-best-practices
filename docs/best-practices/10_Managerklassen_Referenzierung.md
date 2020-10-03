@@ -20,7 +20,7 @@ using System.Collections;
 
 // suche nach einem Object vom Typ Camera
 // wenn gefunden, gib den Namen aus
-// oder gib den "No Camera object could be found" zurück
+// oder gib "No Camera object could be found" zurück, wenn kein Object gefunden
 public class ExampleClass : MonoBehaviour
 {
     void Start()
