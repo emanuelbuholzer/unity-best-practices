@@ -2,8 +2,8 @@
 
 ## Problem
 
-Da Aufrufe in der Update-Methode sehr rechenintensiv sind, sollte der Zugriff auf andere GameObjects niemals über über getComponent() / getComponents() in der Methode update() erfolgen.
-Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig Ressourcen aufbraucht. Der Nachteil der Methode GetComponent() ist, dass dies ein innerer Aufruf ist und entsprechend nur GameObjects in der vorhandene Szene resp. Inspector zurückgibt.
+Da Aufrufe in der Update-Methode sehr rechenintensiv sind, sollte der Zugriff auf andere GameObjects niemals über über `GetComponent()` / `GetComponents()` in der Methode `Update()` erfolgen.
+Ansonsten wird die Referenzierung bei jedem Frame erneut aufgerufen, was unötig Ressourcen aufbraucht. Der Nachteil der Methode `GetComponent()` ist, dass dies ein innerer Aufruf ist und entsprechend nur GameObjects in der vorhandene Szene resp. Inspector zurückgibt.
 
 **Beispiel** generische Version der Methode[[1]](#1):
 ```csharp
@@ -26,8 +26,8 @@ public class Example : MonoBehaviour
 
 ## Lösung
 
-Die getComponent-Methode sollte in der Methode Start() aufgerufen werden.
-Die Methode Start() wird für den Frame aufgerufen, wenn ein Script aktiviert wird, bevor die Methode Update() erstmalig aufgerufen wird.
+Die `GetComponent`-Methode sollte in der Methode `Start` aufgerufen werden.
+Die Methode `Start` wird für den Frame aufgerufen, wenn ein Script aktiviert wird, bevor die Methode `Update` erstmalig aufgerufen wird.
 
 **Beispiel**
 ```csharp
