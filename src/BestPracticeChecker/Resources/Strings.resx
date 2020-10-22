@@ -130,9 +130,9 @@
     <value>ConditionalDebug</value>
   </data>
   <data name="ConditionalDebugMessageFormat" xml:space="preserve">
-    <value>Test</value>
+    <value>Use UnityEngine.Debug Statements only with a Conditional Attribute.</value>
   </data>
   <data name="ConditionalDebugDescription" xml:space="preserve">
-    <value>Description</value>
+    <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
   </data>
 </root>
