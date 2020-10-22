@@ -27,7 +27,7 @@ namespace BestPracticeChecker.Test
 
 			var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
 				.WithLocation(10, 13)
-				.WithMessage("Test");
+				.WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
 			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 
