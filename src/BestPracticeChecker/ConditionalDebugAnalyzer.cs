@@ -4,8 +4,11 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using BestPracticeChecker.Resources;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
- namespace BestPracticeChecker 
+namespace BestPracticeChecker
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ConditionalDebugAnalyzer : DiagnosticAnalyzer
@@ -32,25 +35,40 @@ using BestPracticeChecker.Resources;
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
 
         }
-        
+
         private void AnalyzeNode(SyntaxNodeAnalysisContext context)
         {
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
-            
+
             var namespaceName = methodSymbol.ContainingNamespace.Name;
             if (namespaceName != "UnityEngine")
                 return;
-            
+
             var typeName = methodSymbol.ContainingType.Name;
             if (typeName != "Debug")
                 return;
-            
-            // TODO: Go on for multiple `Debug` methods
-            var methodName = methodSymbol.Name;
-            if (methodName != "Log")
-                return;
 
+
+            // Go on for multiple `Debug` methods with List and Equals
+            var methodName = methodSymbol.Name;
+            //if (methodName != "Log")
+            //    return;
+
+            List<string> logholder = new List<string>()
+            {
+                "Log",
+                "LogAssertion",
+                "LogError",
+                "LogException",
+                "LogWarning"
+            };
+
+            var isLogMethod = logholder.Exists(m => m.Equals(methodName));
+            if (isLogMethod != true)
+            {
+                return;
+            }
 
             var outerMethodDeclaration = invocationExpression.FirstAncestorOrSelf<MethodDeclarationSyntax>();
             if (outerMethodDeclaration == null)

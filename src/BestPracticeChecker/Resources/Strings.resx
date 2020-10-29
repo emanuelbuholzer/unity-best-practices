@@ -135,4 +135,13 @@
   <data name="ConditionalDebugDescription" xml:space="preserve">
     <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
   </data>
+  <data name="OrdinalDebugDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="OrdinalDebugMessageFormat" xml:space="preserve">
+    <value>TestOrdinal</value>
+  </data>
+  <data name="OrdinalDebugTitle" xml:space="preserve">
+    <value>OrdinalDebug</value>
+  </data>
 </root>
