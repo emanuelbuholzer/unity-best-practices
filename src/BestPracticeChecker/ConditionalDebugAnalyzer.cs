@@ -61,7 +61,11 @@ namespace BestPracticeChecker
                 "LogAssertion",
                 "LogError",
                 "LogException",
-                "LogWarning"
+                "LogWarning",
+                "LogAssertionFormat",
+                "LogErrorFormat",
+                "LogFormat",
+                "LogWarningFormat"
             };
 
             var isLogMethod = logholder.Exists(m => m.Equals(methodName));
