@@ -64,7 +64,6 @@ namespace BestPracticeChecker
                 "LogWarning"
             };
 
-            //angepasst
             var isLogMethod = logholder.Exists(m => m.Equals(methodName));
             if (isLogMethod != true)
             {

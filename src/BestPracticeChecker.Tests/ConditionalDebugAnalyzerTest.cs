@@ -1,17 +1,17 @@
-using System.Threading.Tasks;
-using BestPracticeChecker;
 using Microsoft.CodeAnalysis;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class ConditionalDebugAnalyzerTest : BaseDiagnosticVerifierTest<ConditionalDebugAnalyzer>
-	{
+    public class ConditionalDebugAnalyzerTest : BaseDiagnosticVerifierTest<ConditionalDebugAnalyzer>
+    {
+        //Without checking  FormatExpression !!!
 
-		[Fact]
-		public async Task VerifyConditionalDebugWorks()
-		{
-			const string test = @"
+        [Fact]
+        public async Task VerifyConditionalDebugLog()
+        {
+            const string test = @"
 using UnityEngine;
 
 namespace BestPracticeChecker.Test
@@ -25,17 +25,17 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-				.WithLocation(10, 13)
-				.WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-			await VerifyCSharpDiagnosticAsync(test, expected);
-		}
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(10, 13)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
 
 
-		[Fact]
-		public async Task VerifyConditionalDebugWorks2()
-		{
-			const string test = @"
+        [Fact]
+        public async Task VerifyConditionalDebugLog01()
+        {
+            const string test = @"
 using System.Diagnostics;
 
 namespace BestPracticeChecker.Test
@@ -50,7 +50,199 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			await VerifyCSharpDiagnosticAsync(test);
-		}
-	}
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksAssertion()
+        {
+            const string test = @"
+using UnityEngine;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string message)
+        {
+            Debug.LogAssertion(message); 
+        }
+    } 
+}";
+
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(10, 13)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksAssertion01()
+        {
+            const string test = @"
+using System.Diagnostics;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+		[Conditional(""ENABLE_LOG_ASSERTION"")]
+        void DoSomething(string message)
+        {
+            UnityEngine.Debug.LogAssertion(message); 
+        }
+    } 
+}";
+
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogError()
+        {
+            const string test = @"
+using UnityEngine;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string message)
+        {
+            Debug.LogError(message); 
+        }
+    } 
+}";
+
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(10, 13)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogError01()
+        {
+            const string test = @"
+using System.Diagnostics;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        [Conditional(""ENABLE_LOG_ERROR"")]
+        void DoSomething(string message)
+        {
+        UnityEngine.Debug.LogError(message); 
+        }
+    } 
+}";
+
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogException()
+        {
+            const string test = @"
+using UnityEngine;
+using System;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {       
+        Exception b  = new Exception();
+     
+        //[Conditional(""ENABLE_LOG_EXCEPTION"")]
+        void DoSomething(string message)
+        {
+            Debug.LogException(b);
+        }
+    } 
+}";
+
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(14, 13)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogExecption01()
+        {
+            const string test = @"
+using System.Diagnostics;
+using System;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {   
+        Exception b  = new Exception();
+        
+        [Conditional(""ENABLE_LOG_EXCEPTION"")]
+        void DoSomething(string message)
+        {
+            UnityEngine.Debug.LogException(b);
+        }
+    } 
+}";
+
+
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogWarning()
+        {
+            const string test = @"
+using UnityEngine;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string message)
+        {
+            Debug.LogWarning(message); 
+        }
+    } 
+}";
+
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(10, 13)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogWarning01()
+        {
+            const string test = @"
+using System.Diagnostics;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {           
+        [Conditional(""ENABLE_LOG_WARNING"")]
+        void DoSomething(string message)
+        {
+            UnityEngine.Debug.LogWarning(message);
+        }
+    } 
+}";
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+    }
+
 }

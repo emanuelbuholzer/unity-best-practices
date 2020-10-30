@@ -88,7 +88,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Description ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build. ähnelt.
         /// </summary>
         internal static string ConditionalDebugDescription {
             get {
@@ -97,7 +97,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Test ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use UnityEngine.Debug Statements only with a Conditional Attribute. ähnelt.
         /// </summary>
         internal static string ConditionalDebugMessageFormat {
             get {
@@ -115,7 +115,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Description ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Replace this methods, or at least use Ordinals  to prevent performanceproblems  ähnelt.
         /// </summary>
         internal static string OrdinalDebugDescription {
             get {
@@ -124,7 +124,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die TestOrdinal ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartWith and String.EndWith with custommethods  ähnelt.
         /// </summary>
         internal static string OrdinalDebugMessageFormat {
             get {
