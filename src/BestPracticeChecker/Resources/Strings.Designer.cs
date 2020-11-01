@@ -117,27 +117,27 @@ namespace BestPracticeChecker.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Replace this methods, or at least use Ordinals  to prevent performanceproblems  ähnelt.
         /// </summary>
-        internal static string OrdinalDebugDescription {
+        internal static string OrdinalDescription {
             get {
-                return ResourceManager.GetString("OrdinalDebugDescription", resourceCulture);
+                return ResourceManager.GetString("OrdinalDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartWith and String.EndWith with custommethods  ähnelt.
         /// </summary>
-        internal static string OrdinalDebugMessageFormat {
+        internal static string OrdinalMessageFormat {
             get {
-                return ResourceManager.GetString("OrdinalDebugMessageFormat", resourceCulture);
+                return ResourceManager.GetString("OrdinalMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die OrdinalDebug ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die InefficientStringAPI ähnelt.
         /// </summary>
-        internal static string OrdinalDebugTitle {
+        internal static string OrdinalTitle {
             get {
-                return ResourceManager.GetString("OrdinalDebugTitle", resourceCulture);
+                return ResourceManager.GetString("OrdinalTitle", resourceCulture);
             }
         }
     }

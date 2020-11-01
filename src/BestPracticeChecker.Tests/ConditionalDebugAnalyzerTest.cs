@@ -6,7 +6,6 @@ namespace BestPracticeChecker.Tests
 {
     public class ConditionalDebugAnalyzerTest : BaseDiagnosticVerifierTest<ConditionalDebugAnalyzer>
     {
-        //Without checking  FormatExpression !!!
 
         [Fact]
         public async Task VerifyConditionalDebugLog()
@@ -157,17 +156,17 @@ namespace BestPracticeChecker.Test
     class Something
     {       
         Exception b  = new Exception();
-     
-        //[Conditional(""ENABLE_LOG_EXCEPTION"")]
-        void DoSomething(string message)
+        
+        void DoSomething()
         {
             Debug.LogException(b);
         }
-    } 
+    }
+    
 }";
 
             var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-                .WithLocation(14, 13)
+                .WithLocation(13, 13)
                 .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
@@ -187,17 +186,15 @@ namespace BestPracticeChecker.Test
         Exception b  = new Exception();
         
         [Conditional(""ENABLE_LOG_EXCEPTION"")]
-        void DoSomething(string message)
+        void DoSomething()
         {
             UnityEngine.Debug.LogException(b);
         }
     } 
 }";
 
-
             await VerifyCSharpDiagnosticAsync(test);
         }
-
 
 
         [Fact]
@@ -214,10 +211,11 @@ namespace BestPracticeChecker.Test
         {
             Debug.LogWarning(message); 
         }
-    } 
+    }
+
 }";
 
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
                 .WithLocation(10, 13)
                 .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
             await VerifyCSharpDiagnosticAsync(test, expected);
@@ -245,4 +243,68 @@ namespace BestPracticeChecker.Test
         }
     }
 
+//    [Fact]
+//    public async Task VerifyConditionalDebugLogStruct()
+//    {
+
+//        const string test = @"
+
+//using UnityEngine;
+
+//namespace BestPracticeChecker.Test
+//{
+//    struct Something
+//    {
+//        string message {get; set;}
+
+//        void  DoSomething(string message)
+//        {
+//             this.message = message;
+//             Debug.Log(message);
+//        }
+//    }
+
+//    Something point = new Something();
+//    point.DoSomething(""message"");
+
+//}";
+//        var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+//            .WithLocation(10, 13)
+//            .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+//        await VerifyCSharpDiagnosticAsync(test, expected);
+
+//    }
+
+
+//    [Fact]
+//    public async Task VerifyConditionalDebugWorksLogStruct02()
+//    {
+//        const string test = @"
+
+//using UnityEngine;
+
+//namespace BestPracticeChecker.Test
+//{
+//    struct Something
+//    {
+//        string message {get; set;}
+
+//        void  DoSomething(string message)
+//        {
+//            this.message = message;
+//            Debug.Log(message);
+//        }
+//    }
+
+//        Something point = new Something();
+//        point.DoSomething(""message"");
+
+//}";
+//        await VerifyCSharpDiagnosticAsync(test);
+//    }
+
+
 }
+
+
+

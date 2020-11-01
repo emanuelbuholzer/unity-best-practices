@@ -135,13 +135,13 @@
   <data name="ConditionalDebugDescription" xml:space="preserve">
     <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
   </data>
-  <data name="OrdinalDebugDescription" xml:space="preserve">
+  <data name="OrdinalDescription" xml:space="preserve">
     <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>
   </data>
-  <data name="OrdinalDebugMessageFormat" xml:space="preserve">
+  <data name="OrdinalMessageFormat" xml:space="preserve">
     <value>Use String.StartWith and String.EndWith with custommethods </value>
   </data>
-  <data name="OrdinalDebugTitle" xml:space="preserve">
-    <value>OrdinalDebug</value>
+  <data name="OrdinalTitle" xml:space="preserve">
+    <value>InefficientStringAPI</value>
   </data>
 </root>

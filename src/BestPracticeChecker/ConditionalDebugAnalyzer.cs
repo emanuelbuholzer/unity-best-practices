@@ -49,12 +49,8 @@ namespace BestPracticeChecker
             if (typeName != "Debug")
                 return;
 
-
-            // Go on for multiple `Debug` methods with List and Equals
             var methodName = methodSymbol.Name;
-            //if (methodName != "Log")
-            //    return;
-
+            
             List<string> logholder = new List<string>()
             {
                 "Log",

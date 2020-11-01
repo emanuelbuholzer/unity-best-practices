@@ -1,11 +1,7 @@
-# Richtiger Umgang mit Strings
+# Optimierung von integrierten, ineffizienten String API's 
 
 ## Problem
-
-Der Umngang mit Strings ist eine der häufigsten Performanceproblematiken in Unity. In C# sind alle Strings immutable (unveränderlich), dass heisst jede Änderung führt implizit zu einer Zuweisung eines neuen String.
-Diese Verkettungen von Zeichenfolgen führen zu Performanceproblemen wenn es sich um grosse Strings, grosse Datenmengen oder engen Schleifenkonstrukte handelt.[[1]](#1) 
-
-Bei folgenden Methoden ist bei diesem Thema besondere Beachtung zu schenken:
+Mit Ausnahme der Umstellung auf ordinale Vergleiche sind sind bestimmte C# String-API's äusserst ineffizient und können zu Performanceproblemen führen. Darunter befinden sich folgende Methoden:
 
 ```csharp
 String.StartsWith()
@@ -14,12 +10,13 @@ String.EndsWith()
 
 String.Format()
 ````
-## Lösung
-Aus oben beschriebener Problematik sollten die Methoden wann immer möglich selbst implementiert oder zumindest mittels Ordinals ausgeführt werden:
 
+## Lösung
+Gemäss beschriebener Problematik sollten die Methoden wann immer möglich selbst implementiert oder zumindest mittels Ordinals ausgeführt werden.
+Dabei können die Methoden String.StartsWith und String.EndsWith relativ einfach ersetzt und optimiert werden. Die Methode String.Format ist dabei schwer zu ersetzen.
 ```csharp
 
-// Beispiel eigener Implementierung für .StartWirhStrings und EndWithStrings
+// Beispiel einer Implementierung für .StartWirhStrings und EndWithStrings 
 
     public static bool CustomEndsWith(string a, string b) {
         int ap = a.Length - 1;
