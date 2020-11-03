@@ -80,5 +80,23 @@ namespace BestPracticeChecker.Resources {
                 return ResourceManager.GetString("ConditionalDebugDescription", resourceCulture);
             }
         }
+        
+        internal static string GetComponentDescription {
+            get {
+                return ResourceManager.GetString("GetComponentDescription", resourceCulture);
+            }
+        }
+        
+        internal static string GetComponentMessageFormat {
+            get {
+                return ResourceManager.GetString("GetComponentMessageFormat", resourceCulture);
+            }
+        }
+        
+        internal static string GetComponentTitle {
+            get {
+                return ResourceManager.GetString("GetComponentTitle", resourceCulture);
+            }
+        }
     }
 }
