@@ -21,7 +21,7 @@ namespace BestPracticeChecker
         private static readonly LocalizableString Title = new LocalizableResourceString(nameof(Strings.ConditionalDebugTitle), Strings.ResourceManager, typeof(Strings));
         private static readonly LocalizableString MessageFormat = new LocalizableResourceString(nameof(Strings.ConditionalDebugMessageFormat), Strings.ResourceManager, typeof(Strings));
         private static readonly LocalizableString Description = new LocalizableResourceString(nameof(Strings.ConditionalDebugDescription), Strings.ResourceManager, typeof(Strings));
-        private static readonly string Category = DiagnosticCategory.Correctness;
+        private static readonly string Category = DiagnosticStrings.DiagnosticCategory.Correctness; 
 
         private static DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
 

@@ -144,4 +144,13 @@
   <data name="OrdinalTitle" xml:space="preserve">
     <value>InefficientStringAPI</value>
   </data>
+  <data name="GetComponentDescription" xml:space="preserve">
+    <value>GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden, da sie rechenintensiv sind und dies in jedem Frame ausgeführt wird.</value>
+  </data>
+  <data name="GetComponentMessageFormat" xml:space="preserve">
+    <value>GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden.</value>
+  </data>
+  <data name="GetComponentTitle" xml:space="preserve">
+    <value>GetComponent Aufrufe in Update() vermeiden</value>
+  </data>
 </root>
