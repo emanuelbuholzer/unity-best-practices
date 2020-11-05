@@ -171,27 +171,27 @@ namespace BestPracticeChecker.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Replace this methods, or at least use Ordinals  to prevent performanceproblems  ähnelt.
         /// </summary>
-        internal static string OrdinalDescription {
+        internal static string IneffStringApiDescription {
             get {
-                return ResourceManager.GetString("OrdinalDescription", resourceCulture);
+                return ResourceManager.GetString("IneffStringApiDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartWith and String.EndWith with custommethods  ähnelt.
         /// </summary>
-        internal static string OrdinalMessageFormat {
+        internal static string IneffStringApiMessageFormat {
             get {
-                return ResourceManager.GetString("OrdinalMessageFormat", resourceCulture);
+                return ResourceManager.GetString("IneffStringApiMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die InefficientStringAPI ähnelt.
         /// </summary>
-        internal static string OrdinalTitle {
+        internal static string IneffStringApiTitle {
             get {
-                return ResourceManager.GetString("OrdinalTitle", resourceCulture);
+                return ResourceManager.GetString("IneffStringApiTitle", resourceCulture);
             }
         }
     }

@@ -9,14 +9,15 @@ String.StartsWith()
 String.EndsWith()
 
 String.Format()
-````
+```
 
 ## Lösung
 Gemäss beschriebener Problematik sollten die Methoden wann immer möglich selbst implementiert oder zumindest mittels Ordinals ausgeführt werden.
-Dabei können die Methoden String.StartsWith und String.EndsWith relativ einfach ersetzt und optimiert werden. Die Methode String.Format ist dabei schwer zu ersetzen.
+Dabei können die Methoden 'String.StartsWith' und 'String.EndsWith' relativ einfach ersetzt und optimiert werden. Die Methode 'String.Format' ist dabei schwer zu ersetzen.
+
 ```csharp
 
-// Beispiel einer Implementierung für .StartWirhStrings und EndWithStrings 
+// Beispiel einer Implementierung für .StartsWith und .EndsWith 
 
     public static bool CustomEndsWith(string a, string b) {
         int ap = a.Length - 1;
@@ -45,6 +46,10 @@ Dabei können die Methoden String.StartsWith und String.EndsWith relativ einfach
 
                 (ap == aLen && bLen >= aLen);
     }
+
+    //Beispiel mit Verwendung eines Ordinal
+
+
 ```
 
 ## Referenzen
