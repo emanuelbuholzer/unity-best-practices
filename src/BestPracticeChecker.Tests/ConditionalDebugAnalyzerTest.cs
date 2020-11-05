@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
 using Xunit;
@@ -10,24 +13,35 @@ namespace BestPracticeChecker.Tests
         [Fact]
         public async Task VerifyConditionalDebugLog()
         {
-            const string test = @"
+            var methods = new List<String>()
+            {
+                "Debug.Log(message);",
+                "Debug.LogAssertion(message);"
+            };
+
+            var tests = methods.Select(m => $@"
 using UnityEngine;
 
 namespace BestPracticeChecker.Test
-{
+{{
     class Something
-    {
+    {{
         void DoSomething(string message)
-        {
-            Debug.Log(message); 
-        }
-    } 
-}";
-
+        {{
+            {m}
+        }}
+    }} 
+}}
+");
+            
             var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
                 .WithLocation(10, 13)
                 .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-            await VerifyCSharpDiagnosticAsync(test, expected);
+            
+            foreach (var test in tests)
+            {
+                await VerifyCSharpDiagnosticAsync(test, expected); 
+            }
         }
 
 
@@ -215,7 +229,7 @@ namespace BestPracticeChecker.Test
 
 }";
 
-                var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
                 .WithLocation(10, 13)
                 .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
             await VerifyCSharpDiagnosticAsync(test, expected);
@@ -241,69 +255,59 @@ namespace BestPracticeChecker.Test
 }";
             await VerifyCSharpDiagnosticAsync(test);
         }
+
+
+        [Fact]
+        public async Task VerifyConditionalDebugLogStruct()
+        {
+
+            const string test = @"
+using UnityEngine;
+
+namespace BestPracticeChecker.Test
+{
+    struct Something
+    {
+        string message {get; set;}
+
+        void  DoSomething(string message)
+        {
+             this.message = message;
+             Debug.Log(message);
+        }
     }
+}";
+            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+                .WithLocation(13, 14)
+                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+            await VerifyCSharpDiagnosticAsync(test, expected);
 
-//    [Fact]
-//    public async Task VerifyConditionalDebugLogStruct()
-//    {
-
-//        const string test = @"
-
-//using UnityEngine;
-
-//namespace BestPracticeChecker.Test
-//{
-//    struct Something
-//    {
-//        string message {get; set;}
-
-//        void  DoSomething(string message)
-//        {
-//             this.message = message;
-//             Debug.Log(message);
-//        }
-//    }
-
-//    Something point = new Something();
-//    point.DoSomething(""message"");
-
-//}";
-//        var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-//            .WithLocation(10, 13)
-//            .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-//        await VerifyCSharpDiagnosticAsync(test, expected);
-
-//    }
+        }
 
 
-//    [Fact]
-//    public async Task VerifyConditionalDebugWorksLogStruct02()
-//    {
-//        const string test = @"
+        [Fact]
+        public async Task VerifyConditionalDebugWorksLogStruct02()
+        {
+            const string test = @"
+using System.Diagnostics;
 
-//using UnityEngine;
+namespace BestPracticeChecker.Test
+{
+    struct Something
+    {
+        string message {get; set;}
 
-//namespace BestPracticeChecker.Test
-//{
-//    struct Something
-//    {
-//        string message {get; set;}
-
-//        void  DoSomething(string message)
-//        {
-//            this.message = message;
-//            Debug.Log(message);
-//        }
-//    }
-
-//        Something point = new Something();
-//        point.DoSomething(""message"");
-
-//}";
-//        await VerifyCSharpDiagnosticAsync(test);
-//    }
-
-
+        [Conditional(""ENABLE_LOG_WARNING"")]
+        void  DoSomething(string message)
+        {
+            this.message = message;
+            UnityEngine.Debug.Log(message);
+        }
+    }
+}";
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+    }
 }
 
 
