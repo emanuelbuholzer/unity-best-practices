@@ -158,5 +158,23 @@ namespace BestPracticeChecker.Resources {
                 return ResourceManager.GetString("GetComponentTitle", resourceCulture);
             }
         }
+        
+        internal static string ConstTagsDescription {
+            get {
+                return ResourceManager.GetString("ConstTagsDescription", resourceCulture);
+            }
+        }
+        
+        internal static string ConstTagsMessageFormat {
+            get {
+                return ResourceManager.GetString("ConstTagsMessageFormat", resourceCulture);
+            }
+        }
+        
+        internal static string ConstTagsTitle {
+            get {
+                return ResourceManager.GetString("ConstTagsTitle", resourceCulture);
+            }
+        }
     }
 }

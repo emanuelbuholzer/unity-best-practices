@@ -53,9 +53,9 @@ namespace BestPracticeChecker
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
             
-            var methodSymbolMatcher = MethodSymbolMatcher.FromMethodSymbol(methodSymbol);
+            var method = Method.From(methodSymbol);
             var methods = new List<string> { "GetComponent", "GetComponents" }; 
-            if (!methods.Any(m => methodSymbolMatcher.MatchMethod("UnityEngine", "GameObject", m)))
+            if (!methods.Any(m => method.Equals("UnityEngine", "GameObject", m)))
                 return;
             
             var ancestorSourceSpans = invocationExpression.Ancestors()
