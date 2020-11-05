@@ -115,6 +115,60 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tags sollten nur mit Konstanten referenziert werden. ähnelt.
+        /// </summary>
+        internal static string ConstTagsDescription {
+            get {
+                return ResourceManager.GetString("ConstTagsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tags sollten nur mit Konstanten referenziert werden. ähnelt.
+        /// </summary>
+        internal static string ConstTagsMessageFormat {
+            get {
+                return ResourceManager.GetString("ConstTagsMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ConstTags ähnelt.
+        /// </summary>
+        internal static string ConstTagsTitle {
+            get {
+                return ResourceManager.GetString("ConstTagsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden, da sie rechenintensiv sind und dies in jedem Frame ausgeführt wird. ähnelt.
+        /// </summary>
+        internal static string GetComponentDescription {
+            get {
+                return ResourceManager.GetString("GetComponentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden. ähnelt.
+        /// </summary>
+        internal static string GetComponentMessageFormat {
+            get {
+                return ResourceManager.GetString("GetComponentMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die GetComponent Aufrufe in Update() vermeiden ähnelt.
+        /// </summary>
+        internal static string GetComponentTitle {
+            get {
+                return ResourceManager.GetString("GetComponentTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Replace this methods, or at least use Ordinals  to prevent performanceproblems  ähnelt.
         /// </summary>
         internal static string OrdinalDescription {
@@ -138,78 +192,6 @@ namespace BestPracticeChecker.Resources {
         internal static string OrdinalTitle {
             get {
                 return ResourceManager.GetString("OrdinalTitle", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentDescription {
-            get {
-                return ResourceManager.GetString("GetComponentDescription", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentMessageFormat {
-            get {
-                return ResourceManager.GetString("GetComponentMessageFormat", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentTitle {
-            get {
-                return ResourceManager.GetString("GetComponentTitle", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsDescription {
-            get {
-                return ResourceManager.GetString("ConstTagsDescription", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsMessageFormat {
-            get {
-                return ResourceManager.GetString("ConstTagsMessageFormat", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsTitle {
-            get {
-                return ResourceManager.GetString("ConstTagsTitle", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentDescription {
-            get {
-                return ResourceManager.GetString("GetComponentDescription", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentMessageFormat {
-            get {
-                return ResourceManager.GetString("GetComponentMessageFormat", resourceCulture);
-            }
-        }
-        
-        internal static string GetComponentTitle {
-            get {
-                return ResourceManager.GetString("GetComponentTitle", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsDescription {
-            get {
-                return ResourceManager.GetString("ConstTagsDescription", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsMessageFormat {
-            get {
-                return ResourceManager.GetString("ConstTagsMessageFormat", resourceCulture);
-            }
-        }
-        
-        internal static string ConstTagsTitle {
-            get {
-                return ResourceManager.GetString("ConstTagsTitle", resourceCulture);
             }
         }
     }

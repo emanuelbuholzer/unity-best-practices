@@ -16,7 +16,12 @@ namespace BestPracticeChecker.Tests
             var methods = new List<String>()
             {
                 "Debug.Log(message);",
-                "Debug.LogAssertion(message);"
+                "Debug.LogAssertion(message);",
+                "Debug.LogError(message);",
+                "Debug.LogWarning(message);",
+                "Debug.LogAssertionFormat(message);",
+                "Debug.LogErrorFormat(message);",
+                "Debug.LogWarningFormat(message);"
             };
 
             var tests = methods.Select(m => $@"
@@ -44,116 +49,39 @@ namespace BestPracticeChecker.Test
             }
         }
 
-
         [Fact]
-        public async Task VerifyConditionalDebugLog01()
+        public async Task VerifyConditionalDebugLog02()
         {
-            const string test = @"
+            var methods = new List<String>()
+            {
+                "UnityEngine.Debug.Log(message);",
+                "UnityEngine.Debug.LogAssertion(message);",
+                "UnityEngine.Debug.LogError(message);",
+                "UnityEngine.Debug.LogWarning(message);",
+                "UnityEngine.Debug.LogAssertionFormat(message);",
+                "UnityEngine.Debug.LogErrorFormat(message);",
+                "UnityEngine.Debug.LogWarningFormat(message);"
+            };
+
+            var tests = methods.Select(m => $@"
 using System.Diagnostics;
 
 namespace BestPracticeChecker.Test
-{
+{{
     class Something
-    {
-		[Conditional(""ENABLE_LOGS"")]
+    {{  
+        [Conditional(""ENABLE_LOG_EXCEPTION"")]
         void DoSomething(string message)
-        {
-            UnityEngine.Debug.Log(message); 
-        }
-    } 
-}";
-
-            await VerifyCSharpDiagnosticAsync(test);
-        }
-
-        [Fact]
-        public async Task VerifyConditionalDebugWorksAssertion()
-        {
-            const string test = @"
-using UnityEngine;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {
-        void DoSomething(string message)
-        {
-            Debug.LogAssertion(message); 
-        }
-    } 
-}";
-
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-                .WithLocation(10, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-            await VerifyCSharpDiagnosticAsync(test, expected);
-        }
-
-
-        [Fact]
-        public async Task VerifyConditionalDebugWorksAssertion01()
-        {
-            const string test = @"
-using System.Diagnostics;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {
-		[Conditional(""ENABLE_LOG_ASSERTION"")]
-        void DoSomething(string message)
-        {
-            UnityEngine.Debug.LogAssertion(message); 
-        }
-    } 
-}";
-
-            await VerifyCSharpDiagnosticAsync(test);
-        }
-
-        [Fact]
-        public async Task VerifyConditionalDebugWorksLogError()
-        {
-            const string test = @"
-using UnityEngine;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {
-        void DoSomething(string message)
-        {
-            Debug.LogError(message); 
-        }
-    } 
-}";
-
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-                .WithLocation(10, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-            await VerifyCSharpDiagnosticAsync(test, expected);
-        }
-
-
-        [Fact]
-        public async Task VerifyConditionalDebugWorksLogError01()
-        {
-            const string test = @"
-using System.Diagnostics;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {
-        [Conditional(""ENABLE_LOG_ERROR"")]
-        void DoSomething(string message)
-        {
-        UnityEngine.Debug.LogError(message); 
-        }
-    } 
-}";
-
-            await VerifyCSharpDiagnosticAsync(test);
+        {{
+            {m}
+        }}
+    }} 
+}}
+");
+            foreach (var test in tests)
+            {
+                await VerifyCSharpDiagnosticAsync(test);
+            }
         }
 
 
@@ -212,52 +140,6 @@ namespace BestPracticeChecker.Test
 
 
         [Fact]
-        public async Task VerifyConditionalDebugWorksLogWarning()
-        {
-            const string test = @"
-using UnityEngine;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {
-        void DoSomething(string message)
-        {
-            Debug.LogWarning(message); 
-        }
-    }
-
-}";
-
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
-                .WithLocation(10, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
-            await VerifyCSharpDiagnosticAsync(test, expected);
-        }
-
-
-        [Fact]
-        public async Task VerifyConditionalDebugWorksLogWarning01()
-        {
-            const string test = @"
-using System.Diagnostics;
-
-namespace BestPracticeChecker.Test
-{
-    class Something
-    {           
-        [Conditional(""ENABLE_LOG_WARNING"")]
-        void DoSomething(string message)
-        {
-            UnityEngine.Debug.LogWarning(message);
-        }
-    } 
-}";
-            await VerifyCSharpDiagnosticAsync(test);
-        }
-
-
-        [Fact]
         public async Task VerifyConditionalDebugLogStruct()
         {
 
@@ -307,6 +189,7 @@ namespace BestPracticeChecker.Test
 }";
             await VerifyCSharpDiagnosticAsync(test);
         }
+
     }
 }
 
