@@ -144,4 +144,13 @@
   <data name="GetComponentTitle" xml:space="preserve">
     <value>GetComponent Aufrufe in Update() vermeiden</value>
   </data>
+  <data name="ConstTagsDescription" xml:space="preserve">
+    <value>Tags sollten nur mit Konstanten referenziert werden.</value>
+  </data>
+  <data name="ConstTagsMessageFormat" xml:space="preserve">
+    <value>Tags sollten nur mit Konstanten referenziert werden.</value>
+  </data>
+  <data name="ConstTagsTitle" xml:space="preserve">
+    <value>ConstTags</value>
+  </data>
 </root>
