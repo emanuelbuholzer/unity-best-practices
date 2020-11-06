@@ -178,7 +178,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartWith and String.EndWith with custommethods  ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartsWith and String.EndsWith with custommethods ähnelt.
         /// </summary>
         internal static string IneffStringApiMessageFormat {
             get {

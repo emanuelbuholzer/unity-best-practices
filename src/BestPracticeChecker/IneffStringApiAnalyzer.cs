@@ -7,6 +7,7 @@ using BestPracticeChecker.Resources;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 
 namespace BestPracticeChecker
 {
@@ -14,16 +15,17 @@ namespace BestPracticeChecker
 
     public class IneffStringApiAnalyzer : DiagnosticAnalyzer
     {
+        //Create Rule
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
                 "IneffStringApi",
-                DiagnosticStrings.GetString(nameof(Strings.ConstTagsTitle)),
-                DiagnosticStrings.GetString(nameof(Strings.ConstTagsMessageFormat)),
+                DiagnosticStrings.GetString(nameof(Strings.IneffStringApiTitle)),
+                DiagnosticStrings.GetString(nameof(Strings.IneffStringApiMessageFormat)),
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.IneffStringApiDescription)));
 
         public override void Initialize(AnalysisContext context)
         {
@@ -50,37 +52,41 @@ namespace BestPracticeChecker
                     Method.From("System", "String", "StartsWith"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     ),
-                //// TODO: Test
+                //Ordinals !!! einpflegen
+                Tuple.Create(
+                    Method.From("System", "String", "From"),
+                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
+                    )
+
                 //Tuple.Create(
                 //    Method.From("UnityEngine.iOS", "OnDemandResourcesRequest", "PreloadAsync"),
                 //    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                 //    )
             };
 
-            //var methodArgumentExtractor =
-            //    methodsArgumentExtractors
-            //        .Where(m => m.Item1.Equals(method))
-            //        .Select(m => m.Item2)
-            //        .SingleOrDefault();
-            //if (methodArgumentExtractor == null)
-            //    return;
+            var methodArgumentExtractor =
+                methodsArgumentExtractors
+                    .Where(m => m.Item1.Equals(method))
+                    .Select(m => m.Item2)
+                    .SingleOrDefault();
+            if (methodArgumentExtractor == null)
+                return;
 
-            //var argumentExpressions = methodArgumentExtractor.Invoke(invocationExpression.ArgumentList.Arguments);
-            //var isConstTagArguments = argumentExpressions
-            //    .Select(a => context.SemanticModel.GetConstantValue(a, context.CancellationToken))
-            //    .Select(r => r.HasValue);
+            var argumentExpressions = methodArgumentExtractor.Invoke(invocationExpression.ArgumentList.Arguments);
+            var isConstTagArguments = argumentExpressions
+                .Select(a => context.SemanticModel.GetConstantValue(a, context.CancellationToken))
+                .Select(r => r.HasValue);
 
-            //var missingConstTagArgumentExpressions = argumentExpressions
-            //    .Zip(isConstTagArguments, Tuple.Create)
-            //    .Where(t => !t.Item2)
-            //    .Select(t => t.Item1);
+            var missingConstTagArgumentExpressions = argumentExpressions
+                .Zip(isConstTagArguments, Tuple.Create)
+                .Where(t => !t.Item2)
+                .Select(t => t.Item1);
 
-            //foreach (var argumentExpression in missingConstTagArgumentExpressions)
-            //{
-            //    context.ReportDiagnostic(Diagnostic.Create(Rule, argumentExpression.GetLocation()));
-            //}
+            foreach (var argumentExpression in missingConstTagArgumentExpressions)
+            {
+                context.ReportDiagnostic(Diagnostic.Create(Rule, argumentExpression.GetLocation()));
+            }
         }
 
-    
     }
 }

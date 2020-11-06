@@ -4,16 +4,16 @@
 Mit Ausnahme der Umstellung auf ordinale Vergleiche sind sind bestimmte C# String-API's äusserst ineffizient und können zu Performanceproblemen führen. Darunter befinden sich folgende Methoden:
 
 ```csharp
+
 String.StartsWith()
 
 String.EndsWith()
 
-String.Format()
 ```
 
 ## Lösung
 Gemäss beschriebener Problematik sollten die Methoden wann immer möglich selbst implementiert oder zumindest mittels Ordinals ausgeführt werden.
-Dabei können die Methoden 'String.StartsWith' und 'String.EndsWith' relativ einfach ersetzt und optimiert werden. Die Methode 'String.Format' ist dabei schwer zu ersetzen.
+Dabei können die Methoden 'String.StartsWith' und 'String.EndsWith' relativ einfach ersetzt und optimiert werden.
 
 ```csharp
 
@@ -48,7 +48,10 @@ Dabei können die Methoden 'String.StartsWith' und 'String.EndsWith' relativ ein
     }
 
     //Beispiel mit Verwendung eines Ordinal
+    public static bool StartsWithOrdinal(string b, StringComparsion){
 
+        a.Startswith(b, StringComparsion.Ordinal);  
+    }
 
 ```
 

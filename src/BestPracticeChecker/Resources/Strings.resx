@@ -139,7 +139,7 @@
     <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>
   </data>
   <data name="IneffStringApiMessageFormat" xml:space="preserve">
-    <value>Use String.StartWith and String.EndWith with custommethods </value>
+    <value>Use String.StartsWith and String.EndsWith with custommethods</value>
   </data>
   <data name="IneffStringApiTitle" xml:space="preserve">
     <value>InefficientStringAPI</value>
