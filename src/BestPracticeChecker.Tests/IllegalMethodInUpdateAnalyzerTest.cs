@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
 using BestPracticeChecker;
+using BestPracticeChecker.Resources;
 using Microsoft.CodeAnalysis;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class GetComponentAnalyzerTest : BaseDiagnosticVerifierTest<GetComponentAnalyzer>
+	public class IllegalMethodInUpdateAnalyzerTest : BaseDiagnosticVerifierTest<IllegalMethodInUpdateAnalyzer>
 	{
 
 		[Fact]
@@ -25,9 +26,9 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			var expected = new DiagnosticResult("GetComponent", DiagnosticSeverity.Warning)
+			var expected = new DiagnosticResult("BP0001", DiagnosticSeverity.Warning)
 				.WithLocation(10, 23)
-				.WithMessage("GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden.");
+				.WithMessage(DiagnosticStrings.GetString("IllegalMethodInUpdateMessageFormat").ToString());
 			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
@@ -43,15 +44,20 @@ namespace BestPracticeChecker.Test
     {
         void Update()
         {
-			var hinges = gameObject.GetComponents(typeof(HingeJoint)) as HingeJoint[];
+			DoSomething();
         }
+
+		void DoSomething()
+		{
+			var hinges = gameObject.GetComponents(typeof(HingeJoint)) as HingeJoint[];
+		}
     } 
 }";
 
-			var expected = new DiagnosticResult("GetComponent", DiagnosticSeverity.Warning)
+			var expected = new DiagnosticResult("BP0001", DiagnosticSeverity.Warning)
 				.WithLocation(10, 17)
-				.WithMessage("GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden.");
-			await VerifyCSharpDiagnosticAsync(test, expected);
+				.WithMessage(DiagnosticStrings.GetString("IllegalMethodInUpdateMessageFormat").ToString());
+			//await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 
 		
@@ -73,7 +79,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			await VerifyCSharpDiagnosticAsync(test);
+			//await VerifyCSharpDiagnosticAsync(test);
 		}
 	}
 }

@@ -12,12 +12,13 @@ namespace BestPracticeChecker
 {
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
+    [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ConstTagsAnalyzer : DiagnosticAnalyzer
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
-                "ConstTags",
+                "BP0004",
                 DiagnosticStrings.GetString(nameof(Strings.ConstTagsTitle)), 
                 DiagnosticStrings.GetString(nameof(Strings.ConstTagsMessageFormat)), 
                 DiagnosticStrings.DiagnosticCategory.Performance, 
@@ -27,7 +28,6 @@ namespace BestPracticeChecker
         
         public override void Initialize(AnalysisContext context)
         {
-            var a = new List<string>() { "a" };
             context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
@@ -38,22 +38,22 @@ namespace BestPracticeChecker
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
             
-            var method = Method.From(methodSymbol);
+            var method = Symbol.From(methodSymbol);
             
-            var methodsArgumentExtractors = new HashSet<Tuple<Method, ArgumentExtractor>>()
+            var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
             {
                 Tuple.Create(
-                    Method.From("UnityEngine", "GameObject", "FindWithTag"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
+                    Symbol.From("UnityEngine", "GameObject", "FindWithTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
                     ),
                 Tuple.Create(
-                    Method.From("UnityEngine", "Application", "SetBuildTags"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression)) 
+                    Symbol.From("UnityEngine", "Application", "SetBuildTags"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
                     ),
                 // TODO: Test
                 Tuple.Create(
-                    Method.From("UnityEngine.iOS", "OnDemandResourcesRequest", "PreloadAsync"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression)) 
+                    Symbol.From("UnityEngine.iOS", "OnDemandResourcesRequest", "PreloadAsync"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
                     )
             };
 
