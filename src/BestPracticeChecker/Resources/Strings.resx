@@ -135,4 +135,31 @@
   <data name="ConditionalDebugDescription" xml:space="preserve">
     <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
   </data>
+  <data name="InefficientStringApiDescription" xml:space="preserve">
+    <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>
+  </data>
+  <data name="InefficientStringApiMessageFormat" xml:space="preserve">
+    <value>Use String.StartsWith and String.EndsWith with custommethods</value>
+  </data>
+  <data name="InefficientStringApiTitle" xml:space="preserve">
+    <value>InefficientStringAPI</value>
+  </data>
+  <data name="GetComponentDescription" xml:space="preserve">
+    <value>GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden, da sie rechenintensiv sind und dies in jedem Frame ausgeführt wird.</value>
+  </data>
+  <data name="GetComponentMessageFormat" xml:space="preserve">
+    <value>GetComponent() und GetComponents() sollte aus Performanzgründen nie in der Update() Methode aufgerufen werden.</value>
+  </data>
+  <data name="GetComponentTitle" xml:space="preserve">
+    <value>GetComponent Aufrufe in Update() vermeiden</value>
+  </data>
+  <data name="ConstTagsDescription" xml:space="preserve">
+    <value>Tags sollten nur mit Konstanten referenziert werden.</value>
+  </data>
+  <data name="ConstTagsMessageFormat" xml:space="preserve">
+    <value>Tags sollten nur mit Konstanten referenziert werden.</value>
+  </data>
+  <data name="ConstTagsTitle" xml:space="preserve">
+    <value>ConstTags</value>
+  </data>
 </root>
