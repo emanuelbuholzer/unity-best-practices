@@ -33,7 +33,6 @@ namespace BestPracticeChecker
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.EnableConcurrentExecution();
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
-
         }
 
         private void AnalyzeNode(SyntaxNodeAnalysisContext context)

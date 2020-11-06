@@ -39,16 +39,16 @@ namespace BestPracticeChecker
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
 
-            var method = Method.From(methodSymbol);
+            var method = Symbol.From(methodSymbol);
 
-            var methodsArgumentExtractors = new HashSet<Tuple<Method, ArgumentExtractor>>()
+            var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
             {
                 Tuple.Create(
-                    Method.From("System", "String", "EndsWith"),
+                    Symbol.From("System", "String", "EndsWith"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     ),
                 Tuple.Create(
-                    Method.From("System", "String", "StartsWith"),
+                    Symbol.From("System", "String", "StartsWith"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     )
             };

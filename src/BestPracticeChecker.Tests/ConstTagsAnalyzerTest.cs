@@ -26,7 +26,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			var expected = new DiagnosticResult("ConstTags", DiagnosticSeverity.Warning)
+			var expected = new DiagnosticResult("BP0004", DiagnosticSeverity.Warning)
 				.WithLocation(11, 41)
 				.WithMessage("Tags sollten nur mit Konstanten referenziert werden.");
 			await VerifyCSharpDiagnosticAsync(test, expected);
@@ -49,7 +49,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			var expected = new DiagnosticResult("ConstTags", DiagnosticSeverity.Warning)
+			var expected = new DiagnosticResult("BP0004", DiagnosticSeverity.Warning)
 				.WithLocation(10, 41)
 				.WithMessage("Tags sollten nur mit Konstanten referenziert werden.");
 			await VerifyCSharpDiagnosticAsync(test, expected);
