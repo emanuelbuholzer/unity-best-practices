@@ -135,13 +135,13 @@
   <data name="ConditionalDebugDescription" xml:space="preserve">
     <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
   </data>
-  <data name="IneffStringApiDescription" xml:space="preserve">
+  <data name="InefficientStringApiDescription" xml:space="preserve">
     <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>
   </data>
-  <data name="IneffStringApiMessageFormat" xml:space="preserve">
+  <data name="InefficientStringApiMessageFormat" xml:space="preserve">
     <value>Use String.StartsWith and String.EndsWith with custommethods</value>
   </data>
-  <data name="IneffStringApiTitle" xml:space="preserve">
+  <data name="InefficientStringApiTitle" xml:space="preserve">
     <value>InefficientStringAPI</value>
   </data>
   <data name="GetComponentDescription" xml:space="preserve">

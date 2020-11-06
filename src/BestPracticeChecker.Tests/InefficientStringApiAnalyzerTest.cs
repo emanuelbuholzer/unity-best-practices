@@ -1,13 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class IneffStringApiAnalyzerTest : BaseDiagnosticVerifierTest<IneffStringApiAnalyzer>
+    public class InefficientStringApiAnalyzerTest : BaseDiagnosticVerifierTest<InefficientStringApiAnalyzer>
     {
 
         [Fact]
@@ -28,7 +25,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-            var expected = new DiagnosticResult("IneffStringApi", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("InefficientStringApi", DiagnosticSeverity.Warning)
                 .WithLocation(11, 24)
                 .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
             await VerifyCSharpDiagnosticAsync(test, expected);
@@ -52,7 +49,7 @@ namespace BestPracticeChecker.Test
         }
     } 
 }";
-            var expected = new DiagnosticResult("IneffStringApi", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("InefficientStringApi", DiagnosticSeverity.Warning)
                 .WithLocation(11, 26)
                 .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
             await VerifyCSharpDiagnosticAsync(test, expected);
@@ -75,10 +72,7 @@ namespace BestPracticeChecker.Test
         }
     } 
 }";
-            var expected = new DiagnosticResult("IneffStringApi", DiagnosticSeverity.Warning)
-                .WithLocation(11, 26)
-                .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
-            await VerifyCSharpDiagnosticAsync(test, expected);
+            await VerifyCSharpDiagnosticAsync(test);
         }
     }
 }

@@ -13,23 +13,22 @@ namespace BestPracticeChecker
 {
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
-    public class IneffStringApiAnalyzer : DiagnosticAnalyzer
+    [DiagnosticAnalyzer(LanguageNames.CSharp)]
+    public class InefficientStringApiAnalyzer : DiagnosticAnalyzer
     {
-        //Create Rule
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
-                "IneffStringApi",
-                DiagnosticStrings.GetString(nameof(Strings.IneffStringApiTitle)),
-                DiagnosticStrings.GetString(nameof(Strings.IneffStringApiMessageFormat)),
+                "InefficientStringApi",
+                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiTitle)),
+                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiMessageFormat)),
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.IneffStringApiDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiDescription)));
 
         public override void Initialize(AnalysisContext context)
         {
-            var a = new List<string>() { "a" };
             context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
@@ -51,18 +50,12 @@ namespace BestPracticeChecker
                 Tuple.Create(
                     Method.From("System", "String", "StartsWith"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                    ),
-                //Ordinals !!! einpflegen
-                Tuple.Create(
-                    Method.From("System", "String", "From"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     )
-
-                //Tuple.Create(
-                //    Method.From("UnityEngine.iOS", "OnDemandResourcesRequest", "PreloadAsync"),
-                //    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                //    )
             };
+
+            // Unique method signature using two arguments => Ordinal Comparison
+            if (invocationExpression.ArgumentList.Arguments.Count == 2)
+                return;
 
             var methodArgumentExtractor =
                 methodsArgumentExtractors

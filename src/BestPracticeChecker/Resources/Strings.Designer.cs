@@ -171,27 +171,27 @@ namespace BestPracticeChecker.Resources {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Replace this methods, or at least use Ordinals  to prevent performanceproblems  ähnelt.
         /// </summary>
-        internal static string IneffStringApiDescription {
+        internal static string InefficientStringApiDescription {
             get {
-                return ResourceManager.GetString("IneffStringApiDescription", resourceCulture);
+                return ResourceManager.GetString("InefficientStringApiDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Use String.StartsWith and String.EndsWith with custommethods ähnelt.
         /// </summary>
-        internal static string IneffStringApiMessageFormat {
+        internal static string InefficientStringApiMessageFormat {
             get {
-                return ResourceManager.GetString("IneffStringApiMessageFormat", resourceCulture);
+                return ResourceManager.GetString("InefficientStringApiMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die InefficientStringAPI ähnelt.
         /// </summary>
-        internal static string IneffStringApiTitle {
+        internal static string InefficientStringApiTitle {
             get {
-                return ResourceManager.GetString("IneffStringApiTitle", resourceCulture);
+                return ResourceManager.GetString("InefficientStringApiTitle", resourceCulture);
             }
         }
     }
