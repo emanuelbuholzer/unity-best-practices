@@ -223,7 +223,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren. ähnelt.
         /// </summary>
         internal static string NonAllocatingPhysicEngineDescription {
             get {
@@ -232,7 +232,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren. ähnelt.
         /// </summary>
         internal static string NonAllocatingPhysicEngineMessageFormat {
             get {
