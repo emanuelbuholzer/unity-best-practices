@@ -120,9 +120,6 @@ namespace BestPracticeChecker
                     ),
             };
 
-            //if (invocationExpression.ArgumentList.Arguments.Count == 0)
-            //    return;
-
             var methodArgumentExtractor =
                 methodsArgumentExtractors
                     .Where(m => m.Item1.Equals(method))

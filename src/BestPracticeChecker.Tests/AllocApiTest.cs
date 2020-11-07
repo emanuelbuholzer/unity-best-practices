@@ -6,7 +6,7 @@ namespace BestPracticeChecker.Tests
 {
     public class AllocApiTest : BaseDiagnosticVerifierTest<AllocApi>
     {
-        //Test for all Physics-Methods
+        //Test for all Physics
 
         [Fact]
         public async Task AllocApiBoxcastHighlighted()
@@ -27,7 +27,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(10, 29)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -52,7 +52,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 33)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -76,7 +76,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -100,7 +100,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 36)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -124,7 +124,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 35)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -148,7 +148,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 29)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -173,7 +173,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -200,7 +200,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -224,7 +224,7 @@ namespace BestPracticeChecker.Test
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
                 .WithLocation(11, 31)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer");
+                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 

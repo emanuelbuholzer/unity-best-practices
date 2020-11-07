@@ -172,10 +172,10 @@
     <value>CameraMainInUpdate</value>
   </data>
   <data name="NonAllocatingPhysicEngineDescription" xml:space="preserve">
-    <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer</value>
+    <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.</value>
   </data>
   <data name="NonAllocatingPhysicEngineMessageFormat" xml:space="preserve">
-    <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer</value>
+    <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Affix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.</value>
   </data>
   <data name="NonAllocatingPhysicEngineTitle" xml:space="preserve">
     <value>Verwenden von nicht allozierenden API's ab Unity 5.3 oder neuer</value>
