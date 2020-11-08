@@ -115,6 +115,33 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode ähnelt.
+        /// </summary>
+        internal static string CompareStringWithOrdinalDescription {
+            get {
+                return ResourceManager.GetString("CompareStringWithOrdinalDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode ähnelt.
+        /// </summary>
+        internal static string CompareStringWithOrdinalMessageFormat {
+            get {
+                return ResourceManager.GetString("CompareStringWithOrdinalMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CompareOrdinal ähnelt.
+        /// </summary>
+        internal static string CompareStringWithOrdinalTitle {
+            get {
+                return ResourceManager.GetString("CompareStringWithOrdinalTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build. ähnelt.
         /// </summary>
         internal static string ConditionalDebugDescription {
