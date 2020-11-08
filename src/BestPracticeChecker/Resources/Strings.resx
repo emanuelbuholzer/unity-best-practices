@@ -180,4 +180,13 @@
   <data name="NonAllocatingPhysicEngineTitle" xml:space="preserve">
     <value>Verwenden von nicht allozierenden API's ab Unity 5.3 oder neuer</value>
   </data>
+  <data name="CompareStringWithOrdinalDescription" xml:space="preserve">
+    <value>Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode</value>
+  </data>
+  <data name="CompareStringWithOrdinalMessageFormat" xml:space="preserve">
+    <value>Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode</value>
+  </data>
+  <data name="CompareStringWithOrdinalTitle" xml:space="preserve">
+    <value>CompareOrdinal</value>
+  </data>
 </root>
