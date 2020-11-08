@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using BestPracticeChecker;
+using BestPracticeChecker.Resources;
 using Microsoft.CodeAnalysis;
 using Xunit;
 
@@ -9,7 +10,7 @@ namespace BestPracticeChecker.Tests
 	{
 
 		[Fact]
-		public async Task MonoBehaviourSingularInUpdateShouldThrow()
+		public async Task VariableTag()
 		{
 			const string test = @"
 using UnityEngine;
@@ -28,12 +29,12 @@ namespace BestPracticeChecker.Test
 
 			var expected = new DiagnosticResult("BP0004", DiagnosticSeverity.Warning)
 				.WithLocation(11, 41)
-				.WithMessage("Tags sollten nur mit Konstanten referenziert werden.");
+				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
 			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
 		[Fact]
-		public async Task MonoBehaviourPluralInUpdateShouldThrow()
+		public async Task ArgumentTag()
 		{
 			const string test = @"
 using UnityEngine;
@@ -51,14 +52,14 @@ namespace BestPracticeChecker.Test
 
 			var expected = new DiagnosticResult("BP0004", DiagnosticSeverity.Warning)
 				.WithLocation(10, 41)
-				.WithMessage("Tags sollten nur mit Konstanten referenziert werden.");
+				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
 			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 
 		
 
 		[Fact]
-		public async Task MonoBehaviourSingularNotInUpdateShouldNotThrow()
+		public async Task InlineConstantTag()
 		{
 			const string test = @"
 using UnityEngine;
@@ -78,7 +79,7 @@ namespace BestPracticeChecker.Test
 		}
 		
 		[Fact]
-		public async Task MonoBehaviourSingularNotInUpdateShouldNotThrow2()
+		public async Task ConstantTag()
 		{
 			const string test = @"
 using UnityEngine;
@@ -99,7 +100,7 @@ namespace BestPracticeChecker.Test
 		}
 		
 		[Fact]
-		public async Task MonoBehaviourSingularNotInUpdateShouldNotThrow3()
+		public async Task ClassMemberConstantTag()
 		{
 			const string test = @"
 using UnityEngine;
@@ -118,27 +119,6 @@ namespace BestPracticeChecker.Test
 }";
 
 			await VerifyCSharpDiagnosticAsync(test);
-		}
-		
-		
-		[Fact]
-		public async Task MonoBehaviourSingularNotInUpdateShouldNotThrow4()
-		{
-			const string test = @"
-using UnityEngine;
-
-namespace BestPracticeChecker.Test
-{
-    class Something : MonoBehaviour
-    {
-		void B()
-		{
-			Application.SetBuildTags(new string[] { ""a""});
-		}
-    } 
-}";
-			// TODO: Currently not working
-			// await VerifyCSharpDiagnosticAsync(test);
 		}
 	}
 }

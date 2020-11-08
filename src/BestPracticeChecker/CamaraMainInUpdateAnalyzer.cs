@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Xml.Schema;
 using BestPracticeChecker.Resources;
 using Microsoft.CodeAnalysis;
@@ -10,7 +13,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace BestPracticeChecker
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class CamaraMainInUpdateAnalyzer : DiagnosticAnalyzer
+    public class CamaraMainInUpdateAnalyzer : SyntaxNodeInMethodAnalyzer
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
@@ -21,35 +24,19 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
-                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)),
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0023_MainCameraInUpdate.md"));
         
-        private MethodExtractor _methodExtractor;
-        
-        public override void Initialize(AnalysisContext context)
+        protected override SyntaxKind ByKind => SyntaxKind.SimpleMemberAccessExpression; 
+        protected override ImmutableList<Symbol> InMethods => 
+            ImmutableList.Create(Symbol.From("UnityEngine", "MonoBehaviour", "Update"));
+
+        protected override ImmutableList<Symbol> FilterBySymbols =>
+            ImmutableList.Create(Symbol.From("UnityEngine", "Camera", "main"));
+
+        public override void AnalyzeNodeInMethod(SemanticModelAnalysisContext context, SyntaxNode node)
         {
-            context.EnableConcurrentExecution();
-            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
-            _methodExtractor = MethodExtractor.Register(context);
-            context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.SimpleMemberAccessExpression);
-        }
-
-        private void AnalyzeNode(SyntaxNodeAnalysisContext context)
-        {
-            var memberAccessExpression = (MemberAccessExpressionSyntax) context.Node;
-            var symbol = context.SemanticModel.GetSymbolInfo(memberAccessExpression).Symbol as IPropertySymbol;
-
-            var cameraMainSymbol = Symbol.From("UnityEngine", "Camera", "main");
-            if (!cameraMainSymbol.Equals(symbol))
-                return;
-
-            var inMethodSearch = NodeInMethodSearch.Create().WithNode(memberAccessExpression);
-            var updateMethodLocations = _methodExtractor.GetLocationsByBaseTypeMethod(
-                Symbol.From("UnityEngine", "MonoBehaviour", "Update")
-            );
-            if (!updateMethodLocations.Any(l => inMethodSearch.WithMethodLocation(l).Search().InMethod))
-                return;
-           
-            context.ReportDiagnostic(Diagnostic.Create(Rule, context.Node.GetLocation()));
+            context.ReportDiagnostic(Diagnostic.Create(Rule, node.GetLocation())); 
         }
     }
 }

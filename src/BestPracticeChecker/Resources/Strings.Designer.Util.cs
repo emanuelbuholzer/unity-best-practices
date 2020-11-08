@@ -11,6 +11,9 @@ namespace BestPracticeChecker.Resources
                 throw new ArgumentNullException(nameof(name));
             return new LocalizableResourceString(name, Strings.ResourceManager, typeof(Strings));
         }
+
+        public static string GetHelpLinkUri(string file) =>
+            $"https://github.com/emanuelbuholzer/unity-best-practices/tree/master/docs/reference/{file}";
         
         public static class DiagnosticCategory
         {

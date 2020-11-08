@@ -24,11 +24,11 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
-                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)),
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0004_ConstantStrings.md"));
         
         public override void Initialize(AnalysisContext context)
         {
-            context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
         }
@@ -39,22 +39,77 @@ namespace BestPracticeChecker
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
             
             var method = Symbol.From(methodSymbol);
-            
+
             var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
             {
                 Tuple.Create(
                     Symbol.From("UnityEngine", "GameObject", "FindWithTag"),
                     ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
-                    ),
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine", "GameObject", "FindGameObjectsWithTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
                 Tuple.Create(
                     Symbol.From("UnityEngine", "Application", "SetBuildTags"),
                     ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
-                    ),
-                // TODO: Test
+                ),
                 Tuple.Create(
-                    Symbol.From("UnityEngine.iOS", "OnDemandResourcesRequest", "PreloadAsync"),
+                    Symbol.From("UnityEngine", "Material", "GetTag"),
                     ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
-                    )
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine", "Component", "CompareTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine", "GameObject", "CompareTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.AnimationModule", "AnimatorStateInfo", "IsTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine", "Material", "SetOverrideTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.iOS.Xcode", "PBXProject", "RemoveAssetTag"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.iOS.Xcode", "PBXProject", "AddAssetTagForFile"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(2)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.iOS.Xcode", "PBXProject", "AddAssetTagToDefaultInstall"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(1)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine", "Application", "SetBuildTags"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.iOS.Xcode", "PBXProject", "RemoveAssetTagForFile"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(2)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEngine.iOS.Xcode", "PBXProject", "RemoveAssetTagFromDefaultInstall"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(1)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEditor.Profiling", "HierarchyFrameDataView", "GetFrameMetaDataCount"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(1)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEditor.XR.Provider", "XRStats", "TryGetStat"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(1)
+                ),
+                Tuple.Create(
+                    Symbol.From("UnityEditor.iOS", "OnDemandResources", "PreloadAsync"),
+                    ArgumentExpressionExtractorFactory.CreatePositionalExtractor(0)
+                ),
             };
 
             var methodArgumentExtractor =
