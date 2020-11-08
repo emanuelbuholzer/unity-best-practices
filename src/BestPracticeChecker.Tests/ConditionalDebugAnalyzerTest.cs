@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
+using BestPracticeChecker.Resources;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
@@ -39,9 +40,9 @@ namespace BestPracticeChecker.Test
 }}
 ");
             
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0002", DiagnosticSeverity.Warning)
                 .WithLocation(10, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+                .WithMessage(DiagnosticStrings.GetString("ConditionalDebugMessageFormat").ToString());
             
             foreach (var test in tests)
             {
@@ -107,9 +108,9 @@ namespace BestPracticeChecker.Test
     
 }";
 
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0002", DiagnosticSeverity.Warning)
                 .WithLocation(13, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+                .WithMessage(DiagnosticStrings.GetString("ConditionalDebugMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -169,9 +170,9 @@ namespace BestPracticeChecker.Test
         }}
     }}
 }}");
-            var expected = new DiagnosticResult("ConditionalDebug", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0002", DiagnosticSeverity.Warning)
                 .WithLocation(13, 13)
-                .WithMessage("Use UnityEngine.Debug Statements only with a Conditional Attribute.");
+                .WithMessage(DiagnosticStrings.GetString("ConditionalDebugMessageFormat").ToString());
 
             foreach (var test in tests)
             {

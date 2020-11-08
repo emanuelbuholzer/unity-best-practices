@@ -10,7 +10,7 @@ namespace BestPracticeChecker.Tests
 	{
 
 		[Fact]
-		public async Task MonoBehaviourSingularInUpdateShouldThrow()
+		public async Task GetComponentInUpdate()
 		{
 			const string test = @"
 using UnityEngine;
@@ -33,7 +33,7 @@ namespace BestPracticeChecker.Test
 		}
 		
 		[Fact]
-		public async Task MonoBehaviourPluralInUpdateShouldThrow()
+		public async Task GetComponentInMethodInUpdate()
 		{
 			const string test = @"
 using UnityEngine;
@@ -55,15 +55,15 @@ namespace BestPracticeChecker.Test
 }";
 
 			var expected = new DiagnosticResult("BP0001", DiagnosticSeverity.Warning)
-				.WithLocation(10, 17)
+				.WithLocation(15, 17)
 				.WithMessage(DiagnosticStrings.GetString("IllegalMethodInUpdateMessageFormat").ToString());
-			//await VerifyCSharpDiagnosticAsync(test, expected);
+			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 
 		
 
 		[Fact]
-		public async Task MonoBehaviourSingularNotInUpdateShouldNotThrow()
+		public async Task GetComponentNotInUpdate()
 		{
 			const string test = @"
 using UnityEngine; 
@@ -79,7 +79,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-			//await VerifyCSharpDiagnosticAsync(test);
+			await VerifyCSharpDiagnosticAsync(test);
 		}
 	}
 }

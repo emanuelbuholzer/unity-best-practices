@@ -127,13 +127,13 @@
     <value>Type Safety</value>
   </data>
   <data name="ConditionalDebugTitle" xml:space="preserve">
-    <value>ConditionalDebug</value>
+    <value>Conditional Debug</value>
   </data>
   <data name="ConditionalDebugMessageFormat" xml:space="preserve">
-    <value>Use UnityEngine.Debug Statements only with a Conditional Attribute.</value>
+    <value>Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden.</value>
   </data>
   <data name="ConditionalDebugDescription" xml:space="preserve">
-    <value>Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build.</value>
+    <value>Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden.</value>
   </data>
   <data name="InefficientStringApiDescription" xml:space="preserve">
     <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>

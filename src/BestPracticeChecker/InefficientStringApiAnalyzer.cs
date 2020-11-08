@@ -19,17 +19,17 @@ namespace BestPracticeChecker
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
-                "InefficientStringApi",
+                "BP0007",
                 DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiTitle)),
                 DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiMessageFormat)),
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiDescription)),
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0007_InefficientStringMethods.md"));
 
         public override void Initialize(AnalysisContext context)
         {
-            context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
         }
