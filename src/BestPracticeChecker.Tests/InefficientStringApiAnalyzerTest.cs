@@ -25,7 +25,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-            var expected = new DiagnosticResult("InefficientStringApi", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0007", DiagnosticSeverity.Warning)
                 .WithLocation(11, 24)
                 .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
             await VerifyCSharpDiagnosticAsync(test, expected);
@@ -49,7 +49,7 @@ namespace BestPracticeChecker.Test
         }
     } 
 }";
-            var expected = new DiagnosticResult("InefficientStringApi", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0007", DiagnosticSeverity.Warning)
                 .WithLocation(11, 26)
                 .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
             await VerifyCSharpDiagnosticAsync(test, expected);

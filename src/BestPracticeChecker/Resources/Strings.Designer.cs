@@ -142,7 +142,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Use UnityEngine.Debug Statements only with a Conditional Attribute to avoid having debug output in the release build. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden. ähnelt.
         /// </summary>
         internal static string ConditionalDebugDescription {
             get {
@@ -151,7 +151,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Use UnityEngine.Debug Statements only with a Conditional Attribute. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden. ähnelt.
         /// </summary>
         internal static string ConditionalDebugMessageFormat {
             get {
@@ -160,7 +160,7 @@ namespace BestPracticeChecker.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ConditionalDebug ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Conditional Debug ähnelt.
         /// </summary>
         internal static string ConditionalDebugTitle {
             get {
@@ -273,6 +273,33 @@ namespace BestPracticeChecker.Resources {
         internal static string NonAllocatingPhysicEngineTitle {
             get {
                 return ResourceManager.GetString("NonAllocatingPhysicEngineTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Methoden Object.Find und Object.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.   ähnelt.
+        /// </summary>
+        internal static string ObjectFindAndTypeDescription {
+            get {
+                return ResourceManager.GetString("ObjectFindAndTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt. ähnelt.
+        /// </summary>
+        internal static string ObjectFindAndTypeMessageFormat {
+            get {
+                return ResourceManager.GetString("ObjectFindAndTypeMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die ObjectFindAndTypeTitle ähnelt.
+        /// </summary>
+        internal static string ObjectFindAndTypeTitle {
+            get {
+                return ResourceManager.GetString("ObjectFindAndTypeTitle", resourceCulture);
             }
         }
     }

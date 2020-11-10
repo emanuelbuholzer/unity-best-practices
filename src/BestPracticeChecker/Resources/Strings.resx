@@ -189,4 +189,13 @@
   <data name="CompareStringWithOrdinalTitle" xml:space="preserve">
     <value>CompareOrdinal</value>
   </data>
+  <data name="ObjectFindAndTypeDescription" xml:space="preserve">
+    <value>Die Methoden Object.Find und Object.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.  </value>
+  </data>
+  <data name="ObjectFindAndTypeMessageFormat" xml:space="preserve">
+    <value>Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.</value>
+  </data>
+  <data name="ObjectFindAndTypeTitle" xml:space="preserve">
+    <value>ObjectFindAndTypeTitle</value>
+  </data>
 </root>
