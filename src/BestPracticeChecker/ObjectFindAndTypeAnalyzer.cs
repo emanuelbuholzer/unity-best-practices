@@ -13,7 +13,7 @@ namespace BestPracticeChecker
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class ObjectFindAndTypeAnalyzer: SyntaxNodeInMethodAnalyzer
+    public class ObjectFindAndTypeAnalyzer : DiagnosticAnalyzer
     {
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
@@ -29,23 +29,27 @@ namespace BestPracticeChecker
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0002_ConditionalDebug.md"));
 
 
-        protected override SyntaxKind ByKind => SyntaxKind.SimpleMemberAccessExpression;
-        protected override ImmutableList<Symbol> InMethods =>
-            ImmutableList.Create(
-                Symbol.From("UnityEngine", "MonoBehaviour", "Start"),
-                Symbol.From("UnityEngine", "MonoBehaviour", "Awake"),
-                Symbol.From("UnityEngine", "GameObject", "Find"),
-                Symbol.From("UnityEngine", "Object", "FindObjectOfType")
-                );
+        public override void Initialize(AnalysisContext context)
+        {
+            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
+            context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
+        }
 
-        protected override ImmutableList<Symbol> FilterBySymbols =>
-            ImmutableList.Create(
+        private void AnalyzeNode(SyntaxNodeAnalysisContext context)
+        {
+            var invocationExpression = (InvocationExpressionSyntax)context.Node;
+            var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
+
+            var method = ImmutableList.Create(
                 Symbol.From("UnityEngine", "GameObject", "Find"),
                 Symbol.From("UnityEngine", "Object", "FindObjectOfType"));
 
-        public override void AnalyzeNodeInMethod(SemanticModelAnalysisContext context, SyntaxNode node)
-        {
-            context.ReportDiagnostic(Diagnostic.Create(Rule, node.GetLocation()));
+            if (method == null)
+                return;
+
+            //ToDo: klären ob noch weitere Prüfungen notwendig??
+
+            context.ReportDiagnostic(Diagnostic.Create(Rule, context.Node.GetLocation()));
         }
     }
 }

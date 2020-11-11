@@ -138,7 +138,7 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
-            var expected = new DiagnosticResult("BP0022", DiagnosticSeverity.Warning)
+            var expected = new DiagnosticResult("BP0022",DiagnosticSeverity.Warning)
                 .WithLocation(11, 34)
                 .WithMessage("Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.");
             await VerifyCSharpDiagnosticAsync(test, expected);
