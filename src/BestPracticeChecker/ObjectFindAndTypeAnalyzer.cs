@@ -44,10 +44,8 @@ namespace BestPracticeChecker
                 Symbol.From("UnityEngine", "GameObject", "Find"),
                 Symbol.From("UnityEngine", "Object", "FindObjectOfType"));
 
-            if (method == null)
+            if (!method.Any(m => m.Equals(Symbol.From(methodSymbol))))
                 return;
-
-            //ToDo: klären ob noch weitere Prüfungen notwendig??
 
             context.ReportDiagnostic(Diagnostic.Create(Rule, context.Node.GetLocation()));
         }

@@ -118,8 +118,7 @@ namespace BestPracticeChecker.Test
                 .WithMessage("Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.");
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
-
-        //ToDo Check if call in any method  
+ 
         [Fact]
         public async Task ObjectFindObjectOfTypeHighlightedInAnyMethod()
         {
@@ -175,6 +174,27 @@ namespace BestPracticeChecker.Test
                 .WithLocation(19, 22)
                 .WithMessage("Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.");
             await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+
+        [Fact]
+        public async Task AnyMethodNotHighlightedTest
+()
+        {
+            const string test = @"
+using System;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {   
+        void DoSomething(string bla) 
+        { 
+            Console.WriteLine(bla);
+        }
+    } 
+}";
+
+             await VerifyCSharpDiagnosticAsync(test);
         }
     }
 }
