@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+﻿﻿using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -6,7 +6,6 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using BestPracticeChecker.Resources;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Linq;
 
 namespace BestPracticeChecker
@@ -14,22 +13,23 @@ namespace BestPracticeChecker
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class InefficientStringApiAnalyzer : DiagnosticAnalyzer
+    public class CompareOrdinalAnalyzer : DiagnosticAnalyzer
     {
+
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
-                "BP0007",
-                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiTitle)),
-                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiMessageFormat)),
+                "BP0006",
+                DiagnosticStrings.GetString(nameof(Strings.CompareStringWithOrdinalTitle)),
+                DiagnosticStrings.GetString(nameof(Strings.CompareStringWithOrdinalMessageFormat)),
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiDescription)),
-                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0007_InefficientStringMethods.md"));
+                description: DiagnosticStrings.GetString(nameof(Strings.CompareStringWithOrdinalDescription)));
 
         public override void Initialize(AnalysisContext context)
         {
+            context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
         }
@@ -44,17 +44,17 @@ namespace BestPracticeChecker
             var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
             {
                 Tuple.Create(
-                    Symbol.From("System", "String", "EndsWith"),
+                    Symbol.From("System", "String", "Equals"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     ),
                 Tuple.Create(
-                    Symbol.From("System", "String", "StartsWith"),
+                    Symbol.From("System", "String", "Compare"),
                     new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
                     )
             };
 
-            // Unique method signature using two arguments => Ordinal Comparison
-            if (invocationExpression.ArgumentList.Arguments.Count == 2)
+            // method signature using three arguments ==> Overload Equal wir StringComparison
+            if (invocationExpression.ArgumentList.Arguments.Count == 3)
                 return;
 
             var methodArgumentExtractor =
@@ -80,6 +80,5 @@ namespace BestPracticeChecker
                 context.ReportDiagnostic(Diagnostic.Create(Rule, argumentExpression.GetLocation()));
             }
         }
-
     }
 }
