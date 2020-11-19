@@ -38,46 +38,20 @@ namespace BestPracticeChecker
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
 
-            var method = Symbol.From(methodSymbol);
-
-            var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
+            var methods = new List<Symbol>()
             {
-                Tuple.Create(
-                    Symbol.From("System", "String", "EndsWith"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                    ),
-                Tuple.Create(
-                    Symbol.From("System", "String", "StartsWith"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                    )
+                Symbol.From("System", "String", "EndsWith"),
+                Symbol.From("System", "String", "StartsWith"),
             };
 
             // Unique method signature using two arguments => Ordinal Comparison
             if (invocationExpression.ArgumentList.Arguments.Count == 2)
                 return;
 
-            var methodArgumentExtractor =
-                methodsArgumentExtractors
-                    .Where(m => m.Item1.Equals(method))
-                    .Select(m => m.Item2)
-                    .SingleOrDefault();
-            if (methodArgumentExtractor == null)
+            if (!methods.Any(m => m.Equals(methodSymbol)))
                 return;
-
-            var argumentExpressions = methodArgumentExtractor.Invoke(invocationExpression.ArgumentList.Arguments);
-            var isConstTagArguments = argumentExpressions
-                .Select(a => context.SemanticModel.GetConstantValue(a, context.CancellationToken))
-                .Select(r => r.HasValue);
-
-            var missingConstTagArgumentExpressions = argumentExpressions
-                .Zip(isConstTagArguments, Tuple.Create)
-                .Where(t => !t.Item2)
-                .Select(t => t.Item1);
-
-            foreach (var argumentExpression in missingConstTagArgumentExpressions)
-            {
-                context.ReportDiagnostic(Diagnostic.Create(Rule, argumentExpression.GetLocation()));
-            }
+            
+            context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
         }
 
     }

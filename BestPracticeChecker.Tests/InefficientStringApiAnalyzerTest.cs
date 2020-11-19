@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
+using BestPracticeChecker.Resources;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
@@ -26,8 +27,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0007", DiagnosticSeverity.Warning)
-                .WithLocation(11, 24)
-                .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("InefficientStringApiMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -50,8 +51,8 @@ namespace BestPracticeChecker.Test
     } 
 }";
             var expected = new DiagnosticResult("BP0007", DiagnosticSeverity.Warning)
-                .WithLocation(11, 26)
-                .WithMessage("Use String.StartsWith and String.EndsWith with custommethods");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("InefficientStringApiMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 

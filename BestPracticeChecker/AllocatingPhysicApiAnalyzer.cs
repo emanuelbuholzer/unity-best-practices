@@ -19,7 +19,7 @@ namespace BestPracticeChecker
                 "BP0020",
                 DiagnosticStrings.GetString(nameof(Strings.NonAllocatingPhysicEngineTitle)),
                 DiagnosticStrings.GetString(nameof(Strings.NonAllocatingPhysicEngineMessageFormat)),
-                DiagnosticStrings.DiagnosticCategory.Performance,
+                DiagnosticStrings.DiagnosticCategory.Correctness,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0020_NonAllocatingPhysics.md"));

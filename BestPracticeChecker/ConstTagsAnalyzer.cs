@@ -21,7 +21,7 @@ namespace BestPracticeChecker
                 "BP0004",
                 DiagnosticStrings.GetString(nameof(Strings.ConstTagsTitle)), 
                 DiagnosticStrings.GetString(nameof(Strings.ConstTagsMessageFormat)), 
-                DiagnosticStrings.DiagnosticCategory.Performance, 
+                DiagnosticStrings.DiagnosticCategory.TypeSafety, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0004_ConstantStrings.md"));
