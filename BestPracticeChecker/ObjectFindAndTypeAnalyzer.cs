@@ -25,7 +25,7 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0002_ConditionalDebug.md"));
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0022_MethodsToAvoid.md"));
 
 
         public override void Initialize(AnalysisContext context)
