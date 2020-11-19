@@ -1,10 +1,11 @@
 ﻿﻿using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
-using Xunit;
+ using BestPracticeChecker.Resources;
+ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class AllocApiTest : BaseDiagnosticVerifierTest<AllocApi>
+    public class AllocatingPhysicApiAnalyzerTest : BaseDiagnosticVerifierTest<AllocatingPhysicApiAnalyzer>
     {
         //Test for all Physics
 
@@ -26,8 +27,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(10, 29)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(10, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -51,8 +52,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 33)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -75,8 +76,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -99,8 +100,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 36)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -123,8 +124,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 35)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -147,8 +148,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 29)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -172,8 +173,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -199,8 +200,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 32)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -223,8 +224,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0020", DiagnosticSeverity.Warning)
-                .WithLocation(11, 31)
-                .WithMessage("Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.");
+                .WithLocation(11, 13)
+                .WithMessage(DiagnosticStrings.GetString("NonAllocatingPhysicEngineMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -269,9 +270,5 @@ namespace BestPracticeChecker.Test
 }";
             await VerifyCSharpDiagnosticAsync(test);
         }
-
-
-
-
     }
 }

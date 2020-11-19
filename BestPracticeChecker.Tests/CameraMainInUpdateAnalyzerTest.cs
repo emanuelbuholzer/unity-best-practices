@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class CameraMainInUpdateAnalyzerTest : BaseDiagnosticVerifierTest<CamaraMainInUpdateAnalyzer>
+	public class CameraMainInUpdateAnalyzerTest : BaseDiagnosticVerifierTest<CameraMainInUpdateAnalyzer>
 	{
 		[Fact]
 		public Task CacheInStartSShouldBeOk()
@@ -56,7 +56,7 @@ namespace BestPracticeChecker.Test
 			
 			var expected = new DiagnosticResult("BP0023", DiagnosticSeverity.Warning)
 				.WithLocation(11, 19)
-				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
+				.WithMessage(DiagnosticStrings.GetString("CameraMainInUpdateMessageFormat").ToString());
 			return VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
@@ -85,7 +85,7 @@ namespace BestPracticeChecker.Test
 			
 			var expected = new DiagnosticResult("BP0023", DiagnosticSeverity.Warning)
 				.WithLocation(16, 19)
-				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
+				.WithMessage(DiagnosticStrings.GetString("CameraMainInUpdateMessageFormat").ToString());
 			return VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
@@ -117,7 +117,7 @@ namespace BestPracticeChecker.Test
 			
 			var expected = new DiagnosticResult("BP0023", DiagnosticSeverity.Warning)
 				.WithLocation(19, 11)
-				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
+				.WithMessage(DiagnosticStrings.GetString("CameraMainInUpdateMessageFormat").ToString());
 			return VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
@@ -154,7 +154,7 @@ namespace BestPracticeChecker.Test
 			
 			var expected = new DiagnosticResult("BP0023", DiagnosticSeverity.Warning)
 				.WithLocation(24, 11)
-				.WithMessage(DiagnosticStrings.GetString("ConstTagsMessageFormat").ToString());
+				.WithMessage(DiagnosticStrings.GetString("CameraMainInUpdateMessageFormat").ToString());
 			return VerifyCSharpDiagnosticAsync(test, expected);
 		}
 	}
