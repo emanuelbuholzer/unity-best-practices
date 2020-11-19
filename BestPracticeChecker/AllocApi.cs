@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+﻿﻿using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -25,7 +25,8 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.NonAllocatingPhysicEngineDescription)));
+                description: DiagnosticStrings.GetString(nameof(Strings.NonAllocatingPhysicEngineDescription)),
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0020_NonAllocatingPhysics.md"));
 
         public override void Initialize(AnalysisContext context)
         {
