@@ -8,7 +8,7 @@ Es wurde eine der folgenden Methoden aufgerufen:
 
 ## Rule description
 
-Auf die Aufrufe der Methoden `Find` und `FindObjectsOfType` ist im Code generell zu verzichten. Da diese APIs über alle in Unity verwendeten GameObjects iterieren, sind mit zunehmenden Umfang der Projekte auch Performanceprobleme einhergehend.
+Auf die Aufrufe der Methoden `Find` und `FindObjectsOfType` ist im Code generell zu verzichten. Da diese APIs Ã¼ber alle in Unity verwendeten GameObjects iterieren, sind mit zunehmenden Umfang der Projekte auch Performanceprobleme einhergehend.
 Eine Ausnahme der obigen Regeln kann bei der Referenzierung von Managerklassen (Singleton) mittels der 'FindObjectOfTyype' - API gemacht werden.
 
 ## How to fix violations
@@ -25,7 +25,20 @@ Nie
 
 ### Code
 
-```
+```csharp
+using UnityEngine;
+
+
+public class ExampleClass : MonoBehaviour
+{
+    public GameObject hand;
+
+    void Example()
+    {
+        hand = GameObject.Find("Hand");
+    }
+
+}
 ```
 
 ## Example of how to fix
@@ -34,7 +47,18 @@ Nie
 
 ### Code
 
-```
+```csharp
+using UnityEngine;
+
+public Klasse ExampleClass: MonoBehaviour
+{
+    public GameObject hand;
+    
+    void Example ()
+    {
+        hand = GameObject.FindWithTag ("Hand"); 
+    }
+}
 ```
 
 ## Related rules
