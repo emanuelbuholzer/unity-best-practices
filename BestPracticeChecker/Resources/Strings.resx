@@ -132,20 +132,11 @@
   <data name="ConditionalDebugMessageFormat" xml:space="preserve">
     <value>Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden.</value>
   </data>
-  <data name="ConditionalDebugDescription" xml:space="preserve">
-    <value>Verwenden Sie UnityEngine.Debug Statements nur mit einem Conditional Attribut, damit die Logs nicht in Release Builds ausgegeben werden.</value>
-  </data>
-  <data name="InefficientStringApiDescription" xml:space="preserve">
-    <value>Replace this methods, or at least use Ordinals  to prevent performanceproblems </value>
-  </data>
   <data name="InefficientStringApiMessageFormat" xml:space="preserve">
     <value>Use String.StartsWith and String.EndsWith with custommethods</value>
   </data>
   <data name="InefficientStringApiTitle" xml:space="preserve">
     <value>InefficientStringAPI</value>
-  </data>
-  <data name="IllegalMethodInUpdateDescription" xml:space="preserve">
-    <value>Die Methoden GetComponent(), GetComponents(), FindObjectOfType() und GetComponentInParent() sollten aus Performanzgründen nie in der Update() Methode aufgerufen werden, da sie rechenintensiv sind und dies in jedem Frame ausgeführt wird.</value>
   </data>
   <data name="IllegalMethodInUpdateMessageFormat" xml:space="preserve">
     <value>Die Methoden GetComponent(), GetComponents(), FindObjectOfType() und GetComponentInParent() sollten aus Performanzgründen nie in der Update() Methode aufgerufen werden.</value>
@@ -153,17 +144,11 @@
   <data name="IllegalMethodInUpdateTitle" xml:space="preserve">
     <value>Rechenintensiver Methodenaufruf in Update() vermeiden</value>
   </data>
-  <data name="ConstTagsDescription" xml:space="preserve">
-    <value>Tags sollten nur mit Konstanten referenziert werden.</value>
-  </data>
   <data name="ConstTagsMessageFormat" xml:space="preserve">
     <value>Tags sollten nur mit Konstanten referenziert werden.</value>
   </data>
   <data name="ConstTagsTitle" xml:space="preserve">
     <value>ConstTags</value>
-  </data>
-  <data name="CameraMainInUpdateDescription" xml:space="preserve">
-    <value>Camera.main sollte nicht in der Update-Methode verwendet werden.</value>
   </data>
   <data name="CameraMainInUpdateMessageFormat" xml:space="preserve">
     <value>Camera.main sollte nicht in der Update-Methode verwendet werden.</value>
@@ -171,17 +156,11 @@
   <data name="CameraMainInUpdateTitle" xml:space="preserve">
     <value>CameraMainInUpdate</value>
   </data>
-  <data name="NonAllocatingPhysicEngineDescription" xml:space="preserve">
-    <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.</value>
-  </data>
   <data name="NonAllocatingPhysicEngineMessageFormat" xml:space="preserve">
     <value>Verwende nicht allozierende APIs ab Unity 5.3 oder neuer durch den Suffix NonAlloc, da diese nicht unnötig viel Speicher aollozieren.</value>
   </data>
   <data name="NonAllocatingPhysicEngineTitle" xml:space="preserve">
     <value>Verwenden von nicht allozierenden API's ab Unity 5.3 oder neuer</value>
-  </data>
-  <data name="CompareStringWithOrdinalDescription" xml:space="preserve">
-    <value>Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode</value>
   </data>
   <data name="CompareStringWithOrdinalMessageFormat" xml:space="preserve">
     <value>Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode</value>
@@ -189,13 +168,16 @@
   <data name="CompareStringWithOrdinalTitle" xml:space="preserve">
     <value>CompareOrdinal</value>
   </data>
-  <data name="ObjectFindAndTypeDescription" xml:space="preserve">
-    <value>Die Methoden Object.Find und Object.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.  </value>
-  </data>
   <data name="ObjectFindAndTypeMessageFormat" xml:space="preserve">
     <value>Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.</value>
   </data>
   <data name="ObjectFindAndTypeTitle" xml:space="preserve">
+    <value>ObjectFindAndTypeTitle</value>
+  </data>
+  <data name="CameraMainInUpdateMessageFormat" xml:space="preserve">
+    <value>Die Methoden GameObject.Find und GameObject.FindObjectOfType sollten generell nicht verwendet werden, da diese über alle verwendeten GameObjects iterieren und es damit schnell zu Performanceproblemen kommt.</value>
+  </data>
+  <data name="CameraMainInUpdateTitle" xml:space="preserve">
     <value>ObjectFindAndTypeTitle</value>
   </data>
 </root>

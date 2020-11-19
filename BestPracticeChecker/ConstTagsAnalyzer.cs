@@ -24,7 +24,6 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
-                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0004_ConstantStrings.md"));
         
         public override void Initialize(AnalysisContext context)

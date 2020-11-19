@@ -25,7 +25,6 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0007_InefficientStringMethods.md"));
 
         public override void Initialize(AnalysisContext context)

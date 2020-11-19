@@ -25,8 +25,8 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.CompareStringWithOrdinalDescription)));
-
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0006_OrdinalStringComparison.mds"));
+        
         public override void Initialize(AnalysisContext context)
         {
             context.EnableConcurrentExecution();
@@ -39,46 +39,30 @@ namespace BestPracticeChecker
             var invocationExpression = (InvocationExpressionSyntax)context.Node;
             var methodSymbol = context.SemanticModel.GetSymbolInfo(invocationExpression, context.CancellationToken).Symbol as IMethodSymbol;
 
-            var method = Symbol.From(methodSymbol);
-
-            var methodsArgumentExtractors = new HashSet<Tuple<Symbol, ArgumentExtractor>>()
+            var methods= new List<Symbol>()
             {
-                Tuple.Create(
-                    Symbol.From("System", "String", "Equals"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                    ),
-                Tuple.Create(
-                    Symbol.From("System", "String", "Compare"),
-                    new ArgumentExtractor(arguments => ImmutableList.Create(arguments.First().Expression))
-                    )
+                Symbol.From("System", "String", "Equals"),
+                Symbol.From("System", "String", "Compare"),
             };
+            
+            if (!methods.Any(m => m.Equals(methodSymbol)))
+                return;
 
             // method signature using three arguments ==> Overload Equal wir StringComparison
             if (invocationExpression.ArgumentList.Arguments.Count == 3)
-                return;
-
-            var methodArgumentExtractor =
-                methodsArgumentExtractors
-                    .Where(m => m.Item1.Equals(method))
-                    .Select(m => m.Item2)
-                    .SingleOrDefault();
-            if (methodArgumentExtractor == null)
-                return;
-
-            var argumentExpressions = methodArgumentExtractor.Invoke(invocationExpression.ArgumentList.Arguments);
-            var isConstTagArguments = argumentExpressions
-                .Select(a => context.SemanticModel.GetConstantValue(a, context.CancellationToken))
-                .Select(r => r.HasValue);
-
-            var missingConstTagArgumentExpressions = argumentExpressions
-                .Zip(isConstTagArguments, Tuple.Create)
-                .Where(t => !t.Item2)
-                .Select(t => t.Item1);
-
-            foreach (var argumentExpression in missingConstTagArgumentExpressions)
             {
-                context.ReportDiagnostic(Diagnostic.Create(Rule, argumentExpression.GetLocation()));
+                var allowedComparisons = new List<string>()
+                {
+                    "StringComparison.Ordinal",
+                    "StringComparison.OrdinalIgnoreCase"
+                };
+                
+                if (allowedComparisons.Any(a => 
+                    a.Equals(invocationExpression.ArgumentList.Arguments[2].Expression.GetText().ToString())))
+                    return;
             }
+            
+            context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
         }
     }
 }

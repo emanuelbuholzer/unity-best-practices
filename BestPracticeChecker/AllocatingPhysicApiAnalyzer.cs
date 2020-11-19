@@ -22,7 +22,6 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.NonAllocatingPhysicEngineDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0020_NonAllocatingPhysics.md"));
 
         public override void Initialize(AnalysisContext context)

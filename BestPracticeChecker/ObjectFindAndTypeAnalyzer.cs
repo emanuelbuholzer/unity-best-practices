@@ -25,7 +25,6 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                description: DiagnosticStrings.GetString(nameof(Strings.ObjectFindAndTypeDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0002_ConditionalDebug.md"));
 
 

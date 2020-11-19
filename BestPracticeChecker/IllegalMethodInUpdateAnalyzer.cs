@@ -25,7 +25,6 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
-                description: DiagnosticStrings.GetString(nameof(Strings.IllegalMethodInUpdateDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0001_MethodsToAvoidInUpdate.md"));
 
         protected override SyntaxKind ByKind => SyntaxKind.InvocationExpression;

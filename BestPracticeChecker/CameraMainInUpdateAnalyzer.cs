@@ -13,18 +13,17 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace BestPracticeChecker
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class CamaraMainInUpdateAnalyzer : SyntaxNodeInMethodAnalyzer
+    public class CameraMainInUpdateAnalyzer : SyntaxNodeInMethodAnalyzer
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
                 "BP0023",
-                DiagnosticStrings.GetString(nameof(Strings.ConstTagsTitle)), 
-                DiagnosticStrings.GetString(nameof(Strings.ConstTagsMessageFormat)), 
+                DiagnosticStrings.GetString(nameof(Strings.CameraMainInUpdateTitle)), 
+                DiagnosticStrings.GetString(nameof(Strings.CameraMainInUpdateMessageFormat)), 
                 DiagnosticStrings.DiagnosticCategory.Performance, 
                 DiagnosticSeverity.Warning, 
                 isEnabledByDefault: true, 
-                description: DiagnosticStrings.GetString(nameof(Strings.ConstTagsDescription)),
                 helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0023_MainCameraInUpdate.md"));
         
         protected override SyntaxKind ByKind => SyntaxKind.SimpleMemberAccessExpression; 

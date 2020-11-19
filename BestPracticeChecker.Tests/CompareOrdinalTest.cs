@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
+using BestPracticeChecker.Resources;
 using Xunit;
 
 namespace BestPracticeChecker.Tests
@@ -25,8 +26,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0006", DiagnosticSeverity.Warning)
-            .WithLocation(10, 29)
-            .WithMessage("Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode");
+            .WithLocation(10, 15)
+            .WithMessage(DiagnosticStrings.GetString("CompareStringWithOrdinalMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
@@ -49,8 +50,8 @@ namespace BestPracticeChecker.Test
 }";
 
             var expected = new DiagnosticResult("BP0006", DiagnosticSeverity.Warning)
-                .WithLocation(10, 35)
-                .WithMessage("Verwende effiziente Methoden zum vergleichen von Strings wie String.CompareOrdinal() oder eine mittels StringComparison überladene String.Equals()-Methode");
+                .WithLocation(10, 20)
+                .WithMessage(DiagnosticStrings.GetString("CompareStringWithOrdinalMessageFormat").ToString());
             await VerifyCSharpDiagnosticAsync(test, expected);
         }
 
