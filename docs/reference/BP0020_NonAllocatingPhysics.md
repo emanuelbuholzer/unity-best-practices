@@ -2,10 +2,7 @@
 
 ## Cause
 
-## Rule description
-
-Es wurde eine der folgenden Methode, welche Speicher alloziert, aus den Physics Modules aufgerufen.
-Mit der Einführung von Unity 5.3 sollten diese Methoden nicht mehr verwendet werden.
+Es wurde eine der folgenden Methode aus den Physics Modules aufgerufen.
 
 [Physics](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Physics.html):
   - `BoxCast`
@@ -28,6 +25,11 @@ Mit der Einführung von Unity 5.3 sollten diese Methoden nicht mehr verwendet we
   - `OverlapCircle`
   - `OverlapPoint`
   - `Raycast`
+  
+## Rule description
+
+Mit der Einführung von Unity 5.3 sollten diese Methoden nicht mehr verwendet werden, da sie Speicher allozieren.
+Dies sollte vom Benutzer selbst gemacht werden.
 
 ## How to fix violations
 
