@@ -25,7 +25,7 @@ namespace BestPracticeChecker
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0006_OrdinalStringComparison.mds"));
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0006_OrdinalStringComparison.md"));
         
         public override void Initialize(AnalysisContext context)
         {
@@ -46,6 +46,10 @@ namespace BestPracticeChecker
             };
             
             if (!methods.Any(m => m.Equals(methodSymbol)))
+                return;
+
+            if (Symbol.From("System", "String", "Equals").Equals(methodSymbol) &&
+                invocationExpression.ArgumentList.Arguments.Count == 2)
                 return;
 
             // method signature using three arguments ==> Overload Equal wir StringComparison

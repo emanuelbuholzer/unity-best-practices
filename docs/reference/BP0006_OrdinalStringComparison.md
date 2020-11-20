@@ -7,7 +7,7 @@ Es wurde die Methode `String.Compare` oder `String.Equals` aufgerufen, ohne Anga
 ## Rule description
 
 Bestimmte String-APIs gelten mit Ausnahme auf ordinale Vergleiche als äusserst uneffizient[[1]](#1).
-Die 'String.Equals)'-Methode sollte nicht ohne Methodenüberladung (unter der Angabe eines ordinalen Vergleichs) eingesetzt werden[[3]](#3).
+Die `String.Equals`-Methode sollte nicht ohne Methodenüberladung (unter der Angabe eines ordinalen Vergleichs) eingesetzt werden[[3]](#3).
 
 ## How to fix violations
 
@@ -45,9 +45,9 @@ Verwendung eines Vergleichs mit ordinalem Vergleich.
 string a = "Hallo";
 string b = "H@llo";
 
-bool c = a.Equals(b, StringComparison.Ordinal);
+String.Compare(a, b, StringComparison.Ordinal);
 
-int d = String.CompareOrdinal(a, b);
+String.Equals(a, b, StringComparison.Ordinal);
 ```
 
 ## Related rules

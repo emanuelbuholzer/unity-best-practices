@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System;
+using Microsoft.CodeAnalysis;
 using System.Threading.Tasks;
 using BestPracticeChecker.Resources;
 using Xunit;
@@ -56,6 +57,26 @@ namespace BestPracticeChecker.Test
         }
 
         [Fact]
+        public async Task StringCompareNotHighlighted()
+        {
+            const string test = @"
+using System;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string a, string b) 
+        { 
+           int c = String.Compare(a,b, StringComparison.Ordinal);
+        }
+    } 
+}";
+
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+        
+        [Fact]
         public async Task StringCompareOrdinalNoHighlighted()
         {
             const string test = @"
@@ -94,6 +115,26 @@ namespace BestPracticeChecker.Test
     } 
 }";
 
+            await VerifyCSharpDiagnosticAsync(test);
+        }
+        
+        [Fact]
+        public async Task StringEqualsDirectHighlighted()
+        {
+            const string test = @"
+using System;
+
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string a, string b) 
+        { 
+            if(a.Equals(b, StringComparison.Ordinal))
+                return;
+        }
+    } 
+}";
             await VerifyCSharpDiagnosticAsync(test);
         }
     }
