@@ -9,11 +9,11 @@ Es wurde eine der folgenden Methoden aufgerufen:
 ## Rule description
 
 Auf die Aufrufe der Methoden `Find` und `FindObjectsOfType` ist im Code generell zu verzichten. Da diese APIs über alle in Unity verwendeten GameObjects iterieren, sind mit zunehmenden Umfang der Projekte auch Performanceprobleme einhergehend [[1]](#1).
-Eine Ausnahme der obigen Regeln kann bei der Referenzierung von Managerklassen (Singleton) mittels der 'FindObjectOfTyype' - API gemacht werden.
+Eine Ausnahme der obigen Regeln kann bei der Referenzierung von Managerklassen (Singleton) mittels der `FindObjectOfTyype` - API gemacht werden.
 
 ## How to fix violations
 
-Generell auf den Einsatz der genannten Methoden verzichten. Ausser beim Refernzieren von Managerklassen in 'Awake' oder 'Start'. Nie in 'Update' verwenden!
+Generell auf den Einsatz der genannten Methoden verzichten. Ausnahmen bildet die Referenzierung von Managerklassen in `Awake` oder `Start`. Nie in `Update` verwenden!
 
 ## When to suppress warnings
 
@@ -29,7 +29,7 @@ Dies funktioniert ausserdem nur im selben `Gameobject` bzw. derselben Hierarchie
 Der Methodenaufruf ist sehr langsam und daher niemals in der `Update`-Methode zu verwenden.
 Weiter wird jeweils nur das erste gefundene `GameObject` ausgegeben. Wenn eine Szene mehrere `GameObjects` mit demselben Namen enthält gibt es keine Garantie dafür, dass ein bestimmtes `GameObject` zurückgegeben wird.
 
-Der Aufruf von `GameObject.Find.Find` führt keinen rekursiven Abstieg in einer Hierarchie durch. Allgemein tut dies keine Methode welche die Referenzierung mittels `.Find` durchführt.
+Der Aufruf von `GameObject.Find.Find` führt keinen rekursiven Abstieg in einer Hierarchie durch.
 
 ### Code
 
@@ -59,7 +59,7 @@ zu verzichten.
 
 ## Related rules
 
-[BP0001: Methods to avoid in Update](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/BP0001_MethodsToAvoidInUpdate.md)
+[BP0001: Methods to avoid in Update](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0001_MethodsToAvoidInUpdate.md)
 
 ## References
 
