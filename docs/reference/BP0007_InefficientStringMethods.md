@@ -76,7 +76,7 @@ public static bool StartsWithOrdinal(string b, StringComparsion){
 
 ## Related rules
 
-[BP0006: Ordinal String Comparison](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/BP0006_OrdinalStringComparison.md)
+[BP0006: Ordinal String Comparison](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0006_OrdinalStringComparison.md)
 
 ## References
 <a id="1">[1]</a>
