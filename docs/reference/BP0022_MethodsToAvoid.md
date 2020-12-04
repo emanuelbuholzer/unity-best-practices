@@ -8,12 +8,12 @@ Es wurde eine der folgenden Methoden aufgerufen:
 
 ## Rule description
 
-Auf die Aufrufe der Methoden `Find` und `FindObjectsOfType` ist im Code generell zu verzichten. Da diese APIs über alle in Unity verwendeten GameObjects iterieren, sind mit zunehmenden Umfang der Projekte auch Performanceprobleme einhergehend [[1]].
+Auf die Aufrufe der Methoden `Find` und `FindObjectsOfType` ist im Code generell zu verzichten. Da diese APIs über alle in Unity verwendeten GameObjects iterieren, sind mit zunehmenden Umfang der Projekte auch Performanceprobleme einhergehend [[1]](#1).
 Eine Ausnahme der obigen Regeln kann bei der Referenzierung von Managerklassen (Singleton) mittels der 'FindObjectOfTyype' - API gemacht werden.
 
 ## How to fix violations
 
-Generell auf den Einsatz der genannten Methoden verzichten. Ausser beim Refernzieren von Managerklassen in 'Awake' oder 'Start' [[2]].
+Generell auf den Einsatz der genannten Methoden verzichten. Ausser beim Refernzieren von Managerklassen in 'Awake' oder 'Start'. Nie in 'Update' verwenden!
 
 ## When to suppress warnings
 
@@ -51,27 +51,11 @@ public class ExampleClass : MonoBehaviour
 ## Example of how to fix
 
 ### Description
+Falls immer möglich ist auf den Aufruf der Methoden
+  - `UnityEngine.GameObject.Find`
+  - `UnityEngine.Object.FindObjectOfType`
 
-Die Methode `GameObject.FindWithTag` wird in einer Methode aufgerufen, um ein Object mit dem Tag Hand zu finden.
-
-Unity bietet Tags an welche insbesondere beim Einsatz von `Collider` zu bevorzugen sind. Diese Tags können auch in der Unity Layer Collision Matrix einfach bearbeitet werden.
-Ausserdem wird beim Einsatz der Methode `GameObject.FindWithTag` eine `UnityException` ausgelöst wenn der Name nicht vorhanden ist. 
-
-### Code
-
-```csharp
-using UnityEngine;
-
-public Klasse ExampleClass: MonoBehaviour
-{
-    public GameObject hand;
-    
-    void Example ()
-    {
-        hand = GameObject.FindWithTag("Hand"); 
-    }
-}
-```
+zu verzichten. 
 
 ## Related rules
 
@@ -82,7 +66,3 @@ public Klasse ExampleClass: MonoBehaviour
 <a id="1">[1]</a>
 Unity Technologies, 16. September 2020, General Optimizations. <br /> 
 Aufgerufen 20. September 2020 von https://docs.unity3d.com/2020.2/Documentation/Manual/BestPracticeUnderstandingPerformanceInUnity7.html
-
-<a id="2">[2]</a>
-GAMEDEV-Vorlesung, Herbstsemester 2019, Game Architecture <br/>
-Aufgerufen 20. September 2020 von http://devmag.org.za/2012/07/12/50-tips-for-working-with-unity-best-practices/
