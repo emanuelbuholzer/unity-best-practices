@@ -74,7 +74,7 @@ class Something : MonoBehaviour
 
 ## Related rules
 
-[BP0023: Main Camera In Update](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/BP0023_MainCameraInUpdate.md)
+[BP0023: Main Camera In Update](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0023_MainCameraInUpdate.md)
 
 ## References
 <a id="1">[1]</a>
