@@ -52,7 +52,8 @@ String.Equals(a, b, StringComparison.Ordinal);
 
 ## Related rules
 
-Keine
+
+[BP0007: Inefficient String Methods](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0007_InefficientStringMethods.md)
 
 ## References
 <a id="1">[1]</a>

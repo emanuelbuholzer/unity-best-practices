@@ -65,7 +65,7 @@ Nie
 
 ### Description
 
-Es wurde eine der obenstehenden Methoden aufgerufen
+Es wurde eine allozierende Methode aufgerufen
 
 ### Code
 
@@ -77,7 +77,7 @@ BoxCast(...);
 
 ### Description
 
-Der Aufruf wurde mit der `NonAlloc`-Alternative ersetzt
+Der Aufruf wurde mit der `NonAlloc`-Alternative ersetzt. Unbedingt die erforderlichen Parameter der zu verwendenen NonAlloc-Methoden prüfen!
 
 ### Code
 
@@ -94,5 +94,3 @@ Keine
 <a id="1">[1]</a>
 Unity Technologies, 16. September 2020, General Optimizations. <br /> 
 Aufgerufen 20. September 2020 von https://docs.unity3d.com/2020.2/Documentation/Manual/BestPracticeUnderstandingPerformanceInUnity7.html
-
-
