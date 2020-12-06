@@ -2,7 +2,7 @@
 
 ## Cause
 
-Es ist eine statische Verwendung von `Regex.Match`oder ein methodische Aufruf von `Regex.Replace`verwendet worden.
+Es ist eine statische Verwendung von `Regex.Match`oder ein methodischer Aufruf von `Regex.Replace`verwendet worden.
 
 ## Rule description
 
