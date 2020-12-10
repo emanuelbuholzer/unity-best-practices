@@ -1,4 +1,4 @@
-# RULEID: Friendly rule name
+# BP0014: Avoid Boxing
 
 ## Cause
 
