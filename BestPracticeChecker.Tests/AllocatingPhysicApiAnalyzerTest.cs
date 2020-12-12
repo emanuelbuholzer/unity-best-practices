@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BestPracticeChecker.Tests
 {
-    public class AllocatingPhysicApiAnalyzerTest : BaseDiagnosticVerifierTest<AllocatingPhysicApiAnalyzer>
+    public class AllocatingPhysicApiAnalyzerTest : DiagnosticVerifier<AllocatingPhysicApiAnalyzer>
     {
         //Test for all Physics
 

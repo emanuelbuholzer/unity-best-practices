@@ -5,7 +5,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class InefficientStringApiAnalyzerTest : BaseDiagnosticVerifierTest<InefficientStringApiAnalyzer>
+    public class InefficientStringApiAnalyzerTest : DiagnosticVerifier<InefficientStringApiAnalyzer>
     {
 
         [Fact]

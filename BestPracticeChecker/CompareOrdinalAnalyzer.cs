@@ -66,18 +66,15 @@ using Microsoft.CodeAnalysis.Operations;
             
             if (!methods.Any(m => m.Equals(methodSymbol)))
                 return;
+                    
+            var ordinalStringComparisonSearchResult = OrdinalStringComparisonSearch
+                .Create()
+                .WithArgumentList(invocationExpression.ArgumentList)
+                .Search();
 
-            var allowedComparisons = new List<string>()
-            {
-                "StringComparison.Ordinal",
-                "StringComparison.OrdinalIgnoreCase"
-            };
-
-            var arguments = invocationExpression.ArgumentList.Arguments;
-            if (allowedComparisons.Any(a => 
-                arguments[arguments.Count-1].Expression.GetText().ToString().Equals(a)))
+            if (!ordinalStringComparisonSearchResult.Any) 
                 return;
-            
+
             context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
         }
     }

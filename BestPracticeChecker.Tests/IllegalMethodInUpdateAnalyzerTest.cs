@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class IllegalMethodInUpdateAnalyzerTest : BaseDiagnosticVerifierTest<IllegalMethodInUpdateAnalyzer>
+	public class IllegalMethodInUpdateAnalyzerTest : DiagnosticVerifier<IllegalMethodInUpdateAnalyzer>
 	{
 
 		[Fact]
