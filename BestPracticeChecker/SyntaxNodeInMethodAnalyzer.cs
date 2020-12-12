@@ -20,8 +20,8 @@ namespace BestPracticeChecker
         private readonly List<Symbol> _typeMethods = new List<Symbol>();
         private readonly List<Symbol> _baseTypeMethods = new List<Symbol>();
         private readonly List<List<Location>> _methodLocations = new List<List<Location>>();
-        private readonly List<InvocationExpressionSyntax> _methodInvocations = new List<InvocationExpressionSyntax>();
-        private readonly List<SyntaxNode> _syntaxNodes = new List<SyntaxNode>();
+        private readonly List<NodeWithSymbol> _methodInvocationsWithSymbols = new List<NodeWithSymbol>();
+        private readonly List<NodeWithSymbol> _syntaxNodesWithSymbols = new List<NodeWithSymbol>();
 
         public sealed override void Initialize(AnalysisContext context)
         {
@@ -48,22 +48,22 @@ namespace BestPracticeChecker
         }
 
         private void AnalyzeInvocationNodes(SyntaxNodeAnalysisContext context) =>
-            _methodInvocations.Add(context.Node as InvocationExpressionSyntax);
-
+            _methodInvocationsWithSymbols.Add(
+                new NodeWithSymbol(
+                    context.Node as InvocationExpressionSyntax, 
+                    Symbol.From((ISymbol) context.SemanticModel.GetSymbolInfo(context.Node).Symbol))
+            );
         private void AnalyzeNodeByKind(SyntaxNodeAnalysisContext context) =>
-            _syntaxNodes.Add(context.Node);
+            _syntaxNodesWithSymbols.Add(new NodeWithSymbol(
+                context.Node, 
+                Symbol.From((ISymbol) context.SemanticModel.GetSymbolInfo(context.Node).Symbol))
+            );
         
         private void AnalyzeModel(SemanticModelAnalysisContext context)
         {
             var startingLocations = InMethods.SelectMany(GetMethodLocation);
             
-            var methodInvocationsWithSymbols = 
-                _methodInvocations.Zip(ExtractSymbols(context.SemanticModel, _methodInvocations), 
-                    (i, s) => Tuple.Create(i as SyntaxNode, s));
-            var syntaxNodesWithSymbols =
-                _syntaxNodes.Zip(ExtractSymbols(context.SemanticModel, _syntaxNodes), Tuple.Create);
-
-            foreach (var node in FindSyntaxNodes(methodInvocationsWithSymbols, syntaxNodesWithSymbols, startingLocations))
+            foreach (var node in FindSyntaxNodes(_methodInvocationsWithSymbols, _syntaxNodesWithSymbols, startingLocations))
             {
                 AnalyzeNodeInMethod(context, node);
             }
@@ -104,13 +104,6 @@ namespace BestPracticeChecker
             return foundNodes;
         }
         
-        private IEnumerable<Symbol> ExtractSymbols(SemanticModel semanticModel, IEnumerable<SyntaxNode> nodes)
-        {
-            return nodes
-                .Select(i => (ISymbol) semanticModel.GetSymbolInfo(i).Symbol)
-                .Select(Symbol.From);
-        }
-
         private IEnumerable<Location> GetMethodLocation(Symbol method)
         {
             var typeMethodLocations = _typeMethods
