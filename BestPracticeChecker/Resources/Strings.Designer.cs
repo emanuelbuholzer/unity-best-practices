@@ -63,6 +63,12 @@ namespace BestPracticeChecker.Resources {
             }
         }
         
+        internal static string CategoryCodeStyle {
+            get {
+                return ResourceManager.GetString("CategoryCodeStyle", resourceCulture);
+            }
+        }
+        
         internal static string ConditionalDebugTitle {
             get {
                 return ResourceManager.GetString("ConditionalDebugTitle", resourceCulture);
@@ -156,6 +162,30 @@ namespace BestPracticeChecker.Resources {
         internal static string ObjectFindAndTypeTitle {
             get {
                 return ResourceManager.GetString("ObjectFindAndTypeTitle", resourceCulture);
+            }
+        }
+        
+        internal static string SmallClassesMessageFormat {
+            get {
+                return ResourceManager.GetString("SmallClassesMessageFormat", resourceCulture);
+            }
+        }
+        
+        internal static string SmallClassesTitle {
+            get {
+                return ResourceManager.GetString("SmallClassesTitle", resourceCulture);
+            }
+        }
+        
+        internal static string StringReferencesMessageFormat {
+            get {
+                return ResourceManager.GetString("StringReferencesMessageFormat", resourceCulture);
+            }
+        }
+        
+        internal static string StringReferencesTitle {
+            get {
+                return ResourceManager.GetString("StringReferencesTitle", resourceCulture);
             }
         }
     }

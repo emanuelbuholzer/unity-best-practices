@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class CompareOrdinalTest : BaseDiagnosticVerifierTest<CompareOrdinalAnalyzer>
+    public class CompareOrdinalTest : DiagnosticVerifier<CompareOrdinalAnalyzer>
     {
         [Fact]
         public async Task StringEqualsOperationHighlighted()

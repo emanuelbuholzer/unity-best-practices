@@ -13,13 +13,14 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public abstract class DiagnosticVerifier
+	public abstract class DiagnosticVerifier<TAnalyzer>
+		where TAnalyzer : DiagnosticAnalyzer, new() 
 	{
 		private const string DefaultFilePathPrefix = "Test";
 		private const string CSharpDefaultFileExt = "cs";
 		private const string TestProjectName = "TestProject";
 
-		protected virtual string EditorConfig => @"
+		protected string EditorConfig => @"
 is_global = true
 [*]
 # Assuming assembly reference 'mscorlib, Version=2.0.0.0' used by 'UnityEngine' matches identity 'mscorlib, Version=4.0.0.0' of 'mscorlib', you may need to supply runtime policy
@@ -27,58 +28,23 @@ dotnet_diagnostic.CS1701.severity = none
 
 # cf. IDE0051
 dotnet_diagnostic.CS0414.severity = none
+
+dotnet_diagnostic.CS8019.severity = none
 ";
 
-		protected abstract DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer();
+		protected DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
+		{
+			return new TAnalyzer();
+		}
 
 		protected virtual IEnumerable<DiagnosticAnalyzer> GetRelatedAnalyzers(DiagnosticAnalyzer analyzer)
 		{
 			return Enumerable.Empty<DiagnosticAnalyzer>();
 		}
 
-		protected static DiagnosticResult ExpectDiagnostic(DiagnosticDescriptor descriptor)
-		{
-			return new DiagnosticResult(descriptor);
-		}
-
-		protected DiagnosticResult ExpectDiagnostic(string diagnosticId)
-		{
-			var analyzer = GetCSharpDiagnosticAnalyzer();
-			try
-			{
-				return ExpectDiagnostic(analyzer.SupportedDiagnostics.Single(i => i.Id == diagnosticId));
-			}
-			catch (InvalidOperationException ex)
-			{
-				throw new InvalidOperationException(
-					$"'{nameof(Diagnostic)}(string)' can only be used when the analyzer has a single supported diagnostic with the specified ID. Use the '{nameof(Diagnostic)}(DiagnosticDescriptor)' overload to specify the descriptor from which to create the expected result.",
-					ex);
-			}
-		}
-
-		protected DiagnosticResult ExpectDiagnostic()
-		{
-			var analyzer = GetCSharpDiagnosticAnalyzer();
-			try
-			{
-				return ExpectDiagnostic(analyzer.SupportedDiagnostics.Single());
-			}
-			catch (InvalidOperationException ex)
-			{
-				throw new InvalidOperationException(
-					$"'{nameof(Diagnostic)}()' can only be used when the analyzer has a single supported diagnostic. Use the '{nameof(Diagnostic)}(DiagnosticDescriptor)' overload to specify the descriptor from which to create the expected result.",
-					ex);
-			}
-		}
-
 		protected Task VerifyCSharpDiagnosticAsync(string source, params DiagnosticResult[] expected)
 		{
 			return VerifyDiagnosticsAsync(new[] { source }, GetCSharpDiagnosticAnalyzer(), expected);
-		}
-
-		protected Task VerifyCSharpDiagnosticAsync(string[] sources, params DiagnosticResult[] expected)
-		{
-			return VerifyDiagnosticsAsync(sources, GetCSharpDiagnosticAnalyzer(), expected);
 		}
 
 		private async Task VerifyDiagnosticsAsync(string[] sources, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expected)
@@ -87,7 +53,7 @@ dotnet_diagnostic.CS0414.severity = none
 			VerifyDiagnosticResults(diagnostics, analyzer, expected);
 		}
 
-		protected virtual void VerifyDiagnosticResults(Diagnostic[] actualResults, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expectedResults)
+		protected void VerifyDiagnosticResults(Diagnostic[] actualResults, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expectedResults)
 		{
 			var expectedCount = expectedResults.Length;
 			var actualCount = actualResults.Length;
@@ -289,15 +255,10 @@ dotnet_diagnostic.CS0414.severity = none
 			return documents;
 		}
 
-		protected Document CreateDocument(string source)
-		{
-			return CreateProject(new[] { source }).Documents.First();
-		}
-
 		private static IEnumerable<string> UnityAssemblies()
 		{
 			var firstInstallationPath = UnityPath.FirstInstallation();
-			string installationFullPath = firstInstallationPath;
+			var installationFullPath = firstInstallationPath;
 
 			if (UnityPath.OnWindows())
 			{
@@ -306,7 +267,7 @@ dotnet_diagnostic.CS0414.severity = none
 				// Unity installation might be within the Hub directory for Unity Hub installations
 				if (!Directory.Exists(installationFullPath))
 				{
-					string installationHubDirectory = Path.Combine(firstInstallationPath, "Hub", "Editor");
+					var installationHubDirectory = Path.Combine(firstInstallationPath, "Hub", "Editor");
 					if (Directory.Exists(installationHubDirectory))
 					{
 						var editorVersion = Directory.GetDirectories(installationHubDirectory).FirstOrDefault();

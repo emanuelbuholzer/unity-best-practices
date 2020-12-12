@@ -13,18 +13,18 @@ namespace BestPracticeChecker
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class InefficientStringApiAnalyzer : DiagnosticAnalyzer
+    public class StringReferencesAnalyzer : DiagnosticAnalyzer
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
         private static readonly DiagnosticDescriptor Rule =
             new DiagnosticDescriptor(
-                "BP0007",
-                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiTitle)),
-                DiagnosticStrings.GetString(nameof(Strings.InefficientStringApiMessageFormat)),
+                "BP0003",
+                DiagnosticStrings.GetString(nameof(Strings.StringReferencesTitle)),
+                DiagnosticStrings.GetString(nameof(Strings.StringReferencesMessageFormat)),
                 DiagnosticStrings.DiagnosticCategory.Performance,
                 DiagnosticSeverity.Warning,
                 isEnabledByDefault: true,
-                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0007_InefficientStringMethods.md"));
+                helpLinkUri: DiagnosticStrings.GetHelpLinkUri("BP0003_StringReferences.md"));
 
         public override void Initialize(AnalysisContext context)
         {
@@ -39,22 +39,16 @@ namespace BestPracticeChecker
 
             var methods = new List<Symbol>()
             {
-                Symbol.From("System", "String", "EndsWith"),
-                Symbol.From("System", "String", "StartsWith"),
+                Symbol.From("UnityEngine", "MonoBehaviour", "StartCoroutine"),
+                Symbol.From("UnityEngine", "MonoBehaviour", "StopCoroutine"),
             };
 
             if (!methods.Any(m => m.Equals(methodSymbol)))
                 return;
-            
-            var ordinalStringComparisonSearchResult = OrdinalStringComparisonSearch
-                .Create()
-                .WithArgumentList(invocationExpression.ArgumentList)
-                .Search();
 
-            if (!ordinalStringComparisonSearchResult.Any) 
-                return;
-            
-            context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
+            var firstParameterType = methodSymbol.Parameters.FirstOrDefault().Type;
+            if ("String".Equals(firstParameterType.Name) && "System".Equals(firstParameterType.ContainingNamespace.ToString()))
+                context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
         }
 
     }

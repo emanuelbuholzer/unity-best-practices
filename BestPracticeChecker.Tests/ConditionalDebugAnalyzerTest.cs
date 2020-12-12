@@ -8,7 +8,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class ConditionalDebugAnalyzerTest : BaseDiagnosticVerifierTest<ConditionalDebugAnalyzer>
+    public class ConditionalDebugAnalyzerTest : DiagnosticVerifier<ConditionalDebugAnalyzer>
     {
 
         [Fact]

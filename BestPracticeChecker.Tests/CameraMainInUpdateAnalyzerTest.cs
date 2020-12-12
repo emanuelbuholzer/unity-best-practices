@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class CameraMainInUpdateAnalyzerTest : BaseDiagnosticVerifierTest<CameraMainInUpdateAnalyzer>
+	public class CameraMainInUpdateAnalyzerTest : DiagnosticVerifier<CameraMainInUpdateAnalyzer>
 	{
 		[Fact]
 		public Task CacheInStartSShouldBeOk()
