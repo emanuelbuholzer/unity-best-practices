@@ -29,7 +29,7 @@ namespace BestPracticeChecker.Test
 			var expected = new DiagnosticResult("BP0001", DiagnosticSeverity.Warning)
 				.WithLocation(10, 23)
 				.WithMessage(DiagnosticStrings.GetString("IllegalMethodInUpdateMessageFormat").ToString());
-			//await VerifyCSharpDiagnosticAsync(test, expected);
+			await VerifyCSharpDiagnosticAsync(test, expected);
 		}
 		
 		[Fact]

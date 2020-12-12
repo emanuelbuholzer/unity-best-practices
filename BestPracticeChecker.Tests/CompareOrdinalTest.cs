@@ -9,6 +9,28 @@ namespace BestPracticeChecker.Tests
     public class CompareOrdinalTest : BaseDiagnosticVerifierTest<CompareOrdinalAnalyzer>
     {
         [Fact]
+        public async Task StringEqualsOperationHighlighted()
+        {
+            const string test = @"
+namespace BestPracticeChecker.Test
+{
+    class Something
+    {
+        void DoSomething(string a, string b) 
+        { 
+           if(a == b)
+                return;
+        }
+    } 
+}";
+
+            var expected = new DiagnosticResult("BP0006", DiagnosticSeverity.Warning)
+            .WithLocation(8, 15)
+            .WithMessage(DiagnosticStrings.GetString("CompareStringWithOrdinalMessageFormat").ToString());
+            await VerifyCSharpDiagnosticAsync(test, expected);
+        }
+        
+        [Fact]
         public async Task StringEqualsHighlighted()
         {
             const string test = @"
