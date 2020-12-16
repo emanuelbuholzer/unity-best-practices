@@ -1,4 +1,4 @@
-# RULEID: Friendly rule name
+# BP0021: Optimize mathematical operations
 
 ## Cause
 
