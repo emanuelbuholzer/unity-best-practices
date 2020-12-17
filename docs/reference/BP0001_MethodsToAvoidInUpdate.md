@@ -79,4 +79,4 @@ class Something : MonoBehaviour
 ## References
 <a id="1">[1]</a>
 Richard Wetzel, Herbstsemester 2019, Game Architecture<br/>
-aufgerufen am 22. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
+aufgerufen am 22. September 2020 von https://drive.google.com/file/d/14pu-zxf7NAG8-nKgfBrdSwbPRTU-MPrx/view?usp=sharing
