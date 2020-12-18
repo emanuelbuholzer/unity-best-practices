@@ -63,6 +63,6 @@ stackoverflow, 03. März 2016, GameObject.FindObjectOfType<>() vs GetComponent<>
 Aufgerufen 03. Oktober 2020 https://stackoverflow.com/questions/30310847/gameobject-findobjectoftype-vs-getcomponent
 
 <a id="2">[2]</a>
-Richard Wetzel, Herbstsemester 2019, Game Architecture
+Richard Wetzel, Herbstsemester 2019, Game Architecture<br/>
 aufgerufen am 22. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
 
