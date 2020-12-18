@@ -20,12 +20,13 @@ Nie
 
 ### Description
 
-Verwende ein Singleton Instanz wenn ein lerres Array zurückgegeben wird. Da bei jedem Aufruf der Methode ein neues Array erstellt wird.
+Beim jedem Aufruf der Methode welche ein leerer Satz an Array zurückgeben kann wird ein neues Array erstellt.
 
 ### Code
 
 ```csharp
 
+Array a = new Array[0];
 
 public Array doSomething(a)
 {
@@ -40,6 +41,8 @@ doSomething(a);
 ## Example of how to fix
 
 ### Description
+
+Verwende ein Singleton Instanz wenn ein lerres Array zurückgegeben wird. Da bei jedem Aufruf der Methode ein neues Array erstellt wird.
 
 ### Code
 
