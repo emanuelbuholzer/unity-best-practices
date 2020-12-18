@@ -1,4 +1,4 @@
-# BP0021: Optimize Mathematical Operations
+# BP0021: Optimize mathematical operations
 
 ## Cause
 

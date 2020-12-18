@@ -2,26 +2,28 @@
 
 ## Cause
 
-Es wurde ein primitiver Werttyp als Verweistyp verwendet.
+Es wurde eine primitive Variable in einen Verweistyp umgewandelt.
 
 ## Rule description
 
-Wenn primitive Werttypen (z.B. `int` oder `float`) an Objekt-typsierte Methoden übergeben werden, wird der primitve Werttyp als Verweistyp verwendet und [Boxing](https://docs.microsoft.com/de-ch/dotnet/csharp/programming-guide/types/boxing-and-unboxing) wird durchgeführt.
+Boxing ist eine der häufigsten Quellen für unbeabsichtigte, temporäre Speicherzuweisungen in Unity-Projekten).
+Es tritt immer dann auf, wenn ein werttypisierter Wert als Referenztyp verwendet wird. Dies tritt am häufigsten auf, wenn primitive werttypisierte Variablen (wie int und float) an objekttypisierte Methoden übergeben werden[[1]](#1).
 
-In diesem Fall werden die Wertetypen auf dem Heap alloziert anstatt auf dem Stack, was weniger effizient ist.
-Da Unity kein Generational Garbage Collection verwendet, können die kleinen, häufigen temporären Boxing Allokationen nicht effizient aufgeräumt werden [[1]](#1).
-Beide Faktoren können zu negativen Auswirkungen auf die Perfomance des Games wirken.
-
+C# -IDEs und Compiler geben im Allgemeinen keine Warnungen zum Boxen aus, obwohl dies zu unbeabsichtigten Speicherzuweisungen führt. Dies liegt daran, dass die C#-Sprache unter der Annahme entwickelt worden ist, dass kleine temporäre Zuweisungen von Garbage Collectors der Generation und Speicherpools mit Zuordnungsgrößensensitivität effizient verarbeitet werden.
+Während der Allity-Allokator unterschiedliche Speicherpools für kleine und große Allokationen verwendet, ist der Garbage Collector von Unity notgenerationsübergreifend und kann daher die kleinen, häufigen temporären Allokationen, die durch das Boxen generiert werden, nicht effizient löschen.
+Boxen sollte daher nach Möglichkeit vermieden werden, wenn C#-Code für Unity-Laufzeiten geschrieben wird[[1]](#1).
 
 ## How to fix violations
 
-Boxing sollte nach Möglichkeit vermieden werden, wenn C#-Code für Unity-Laufzeiten geschrieben wird.
+Vermeide das Verwenden von werttypisierten Werten als Übergabeparameter an objekttypisierte Methoden.
 
 ## When to suppress warnings
 
 Grundsätzlich kann diese Diagnostic unterdrückt werden, jedoch kann es bei vielen Verstössen negative Auswirkungen auf die Perfomance des Games haben.
 
 ## Example of a violation
+
+In nachfolgendem sehr einfach gehaltenem Beispiel wird die der int-Wert x geboxt und dann als Argument der objekttypisierten Methode `object.equals` zum Vergleich übergeben.
 
 ### Description
 
@@ -30,55 +32,41 @@ Die primiten Wertetypen `j1` und `j2` werden der Collection übergeben, indem di
 ### Code
 
 ```csharp
-int j1 = 1;
-int j2 = 32;
 
-// Irgendwelcher Code
+int x = 1;
 
-List<int> jointAngles = new List<int>();
-jointAngles.Add(j1);
-jointAngles.Add(j2);
+object y = new object();
 
-// Irgendwelcher Code
-foreach (int jointAngle in joingAngles) 
-{
-    // Irgendwas damit machen
-}
+y.Equals(x);
+
 ```
 
 ## Example of how to fix
 
 ### Description
 
-Durch die Verwendung eines Arrays kann dies umgangen werden.
+Vergleich auf primitven Typen hingegen benötigt kein Boxing.
 
 ### Code
 
 ```csharp
-int j1 = 1;
-int j2 = 32;
 
-// Irgendwelcher Code
+int x = 1;
+int y = 2;
 
-int[] jointAngles = new int[2]();
-jointAngles[0] = j1;
-jointAngles[1] = j2;
+x == y;
 
-// Irgendwelcher Code
-for(int i = 0; i < joingAngles.length; i+=1)
-{
-    // Irgendwas damit machen
-}
 ```
+
 
 ## Related rules
 
-[BP0015: BP0015: IEquality Comparer for Enum Dicts](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/BP0015_IEqualityComparerForEnumDicts.md)
+Keine
 
 ## References
 
-<a id="1">[1]</a>
-Unity Technologies, 16. September 2020, Understanding the managed heap. <br /> 
-Aufgerufen 20. September 2020 von https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity4-1.html
 
+<a id="1">[1]</a>
+Unity Dokumentation, 16. September 2020, Understanding Optimization in Unity <br /> 
+Aufgerufen 13. Dezember 2020 von https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity4-1.html
 

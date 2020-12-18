@@ -79,6 +79,4 @@ class Something : MonoBehaviour
 ## References
 <a id="1">[1]</a>
 Richard Wetzel, Herbstsemester 2019, Game Architecture<br/>
-aufgerufen am 22. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
-
-[1]:	https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0023_MainCameraInUpdate.md
+aufgerufen am 22. September 2020
