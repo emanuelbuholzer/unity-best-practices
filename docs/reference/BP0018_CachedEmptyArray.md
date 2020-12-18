@@ -10,7 +10,7 @@ Ein bekanntes Pattern ist die Rückgabe eines vorab als Singleton Instanz erstel
 
 ## How to fix violations
 
-Erstellen eines leeren Arrays als Singelton und Verwendung der Instanz wenn eine Methode eine Array-Wert `null`zurückgibt. 
+Erstellen eines leeren Arrays als Singleton und Verwendung der Instanz wenn eine Methode eine Array-Wert `null`zurückgibt. 
 
 ## When to suppress warnings
 
@@ -26,15 +26,10 @@ Beim jedem Aufruf der Methode welche ein leerer Satz an Array zurückgeben kann 
 
 ```csharp
 
-Array a = new Array[0];
-
-public Array doSomething(a)
-{
-    Console.WriteLine(a);
+public IEnumerable<Object> DoSomething() {
+    // Do something
+    return new List<>();
 }
-
-doSomething(a);
-doSomething(a);
 
 ```
 
@@ -47,24 +42,10 @@ Verwende ein Singleton Instanz wenn ein lerres Array zurückgegeben wird. Da bei
 ### Code
 
 ```csharp
-
-//Instanziere eine leeres Array als Singleton in einer separaten Klasse
-
-//Verwende die Singleton Instanz als Rückgabewert anstatt null wenn ein leerer Satz von Array zurückgegeben wird
-
-public Array doSomething(a)
-{
-    if (a.lenght = 0)
-    {
-        Console.WriteLine(instance) //Singleton instance     
-    }
-    
-    Console.WriteLine(a);
+public IEnumerable<Object> DoSomething() {
+    // Do something
+    return new Enumerable.Empty<>();
 }
-
-doSomething(a);
-doSomething(a);
-
 ```
 
 ## Related rules

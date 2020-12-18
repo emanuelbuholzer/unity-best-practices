@@ -2,16 +2,16 @@
 
 ## Cause
 
-Vermeide Boxing.
+Es wurde eine primitive Variable in einen Verweistyp umgewandelt.
 
 ## Rule description
 
 Boxing ist eine der häufigsten Quellen für unbeabsichtigte, temporäre Speicherzuweisungen in Unity-Projekten).
-Es tritt immer dann auf, wenn ein werttypisierter Wert als Referenztyp verwendet wird. Dies tritt am häufigsten auf, wenn primitive werttypisierte Variablen (wie int und float) an objekttypisierte Methoden übergeben werden[[1]](*1).
+Es tritt immer dann auf, wenn ein werttypisierter Wert als Referenztyp verwendet wird. Dies tritt am häufigsten auf, wenn primitive werttypisierte Variablen (wie int und float) an objekttypisierte Methoden übergeben werden[[1]](#1).
 
-C # -IDEs und Compiler geben im Allgemeinen keine Warnungen zum Boxen aus, obwohl dies zu unbeabsichtigten Speicherzuweisungen führt. Dies liegt daran, dass die C # -Sprache unter der Annahme entwickelt worden ist, dass kleine temporäre Zuweisungen von Garbage Collectors der Generation und Speicherpools mit Zuordnungsgrößensensitivität effizient verarbeitet werden.
+C# -IDEs und Compiler geben im Allgemeinen keine Warnungen zum Boxen aus, obwohl dies zu unbeabsichtigten Speicherzuweisungen führt. Dies liegt daran, dass die C#-Sprache unter der Annahme entwickelt worden ist, dass kleine temporäre Zuweisungen von Garbage Collectors der Generation und Speicherpools mit Zuordnungsgrößensensitivität effizient verarbeitet werden.
 Während der Allity-Allokator unterschiedliche Speicherpools für kleine und große Allokationen verwendet, ist der Garbage Collector von Unity notgenerationsübergreifend und kann daher die kleinen, häufigen temporären Allokationen, die durch das Boxen generiert werden, nicht effizient löschen.
-Boxen sollte daher nach Möglichkeit vermieden werden, wenn C # -Code für Unity-Laufzeiten geschrieben wird[[1]](*1).
+Boxen sollte daher nach Möglichkeit vermieden werden, wenn C#-Code für Unity-Laufzeiten geschrieben wird[[1]](#1).
 
 ## How to fix violations
 
@@ -41,22 +41,18 @@ y.Equals(x);
 
 ### Description
 
-Lerne Boxing zu identifizieren<br />
-Boxing wird in CPU-Traces als Aufruf einer der wenigen Methoden angezeigt, abhängig vom verwendeten Scripting-Backend.
-Diese haben im Allgemeinen eine der folgenden Formen:
+Vergleich auf primitven Typen hingegen benötigt kein Boxing.
+
+### Code
 
 ```csharp
 
-<some class>::Box(…)
+int x = 1;
+int y = 2;
 
-Box(…)
-
-<some class>_Box(…)
+x == y;
 
 ```
-
-
-wobei `<some class>` der Name einer anderen Klasse oder Struktur und `…` eine Reihe von Argumenten darstellt.
 
 
 ## Related rules

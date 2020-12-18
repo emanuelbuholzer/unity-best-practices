@@ -21,7 +21,7 @@ Nie
 
 ### Description
 
-Eine Konkatenation mit 'string` + `string` erzeugt ein neues Stringobjekt und belastet zusätzlich den Speicher.
+Eine Konkatenation mit `string` + `string` erzeugt ein neues Stringobjekt und belastet zusätzlich den Speicher.
 
 ### Code
 
@@ -55,7 +55,7 @@ StringBuilder myStringBuilder = new StringBuilder("Hello World!");
 
 ## Related rules
 
-[RULEID: Friendly related rule name](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/RULEID_FriendlyRelatedRuleName.md)
+Keine
 
 ## References
 

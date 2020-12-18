@@ -82,7 +82,7 @@ for(int i = 0; i < vertices.Length; i++)
 
 ## Related rules
 
-[RULEID: Friendly related rule name](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/RULEID_FriendlyRelatedRuleName.md)
+Keine
 
 ## References
 
