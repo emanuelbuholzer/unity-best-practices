@@ -54,7 +54,7 @@ Start()
 
 ## Related rules
 
-[BP0001: Methods to avoid in update](https://github.com/emanuelbuholer/unity-best-practices/blob/master/docs/reference/BP0001_MethodsToAvoidInUpdate.md)
+[BP0001: Methods to avoid in update](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0001_MethodsToAvoidInUpdate.md)
 
 ## References
 
