@@ -10,11 +10,11 @@ Es wurde eine der folgenden Methoden in der `Update` Methode aufgerufen:
 ## Rule description
 
 Da Aufrufe der Methoden `GetComponent`, `GetComponents`, `FindObjectsOfType` und `FindObjectOfType` sehr rechenintensiv sind, sollte der Zugriff auf andere GameObjects niemals über diese Methoden in der `Update` Methode erfolgen.
-Da die Referenzierung bei jedem Frame erneut aufgerufen wird, was unötig Ressourcen aufbraucht.
+Da die Referenzierung bei jedem Frame erneut aufgerufen wird, was unnötig Ressourcen aufbraucht.
 
 ## How to fix violations
 
-Anstatt ein solche Aufrufe in der `Update` zu bewerkstelligen, sollten solche Aufrufe in der Methode `Start` oder `OnEnable` bewerkstelligt werdenn.
+Anstatt ein solche Aufrufe in der `Update` zu bewerkstelligen, sollten solche Aufrufe in der Methode `Start` oder `OnEnable` bewerkstelligt werden.
 Von dort aus kann die Referenz gecached werden und in der `Update` Methode darauf zugegriffen werden.
 
 Als Alternative kann eine Manager Klasse verwendet werden, welche die Referenz anbietet oder injectet.
@@ -74,9 +74,11 @@ class Something : MonoBehaviour
 
 ## Related rules
 
-[BP0023: Main Camera In Update](https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0023_MainCameraInUpdate.md)
+[BP0023: Main Camera In Update][1]
 
 ## References
 <a id="1">[1]</a>
 Richard Wetzel, Herbstsemester 2019, Game Architecture<br/>
 aufgerufen am 22. September 2020 von https://docs.unity3d.com/ScriptReference/GameObject.GetComponent.html
+
+[1]:	https://github.com/emanuelbuholzer/unity-best-practices/blob/master/docs/reference/BP0023_MainCameraInUpdate.md
