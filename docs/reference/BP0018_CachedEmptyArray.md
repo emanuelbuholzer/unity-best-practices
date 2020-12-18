@@ -1,4 +1,4 @@
-# RULEID: Friendly rule name
+# BP0018: Cached Empty Arrays
 
 ## Cause
 
