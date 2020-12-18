@@ -21,9 +21,17 @@ Nie
 
 ### Description
 
+Eine Konkatenation mit 'string` + `string` erzeugt ein neues Stringobjekt und belastet zusätzlich den Speicher.
+
 ### Code
 
 ```csharp
+
+string a = "hallo";
+string b = "World!":
+
+string c = a + b;
+
 
 ```
 
