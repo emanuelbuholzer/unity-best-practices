@@ -7,8 +7,9 @@ using BestPracticeChecker.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.CodeAnalysis.Operations;
 
-namespace BestPracticeChecker
+ namespace BestPracticeChecker
 {
     using ArgumentExtractor = Func<SeparatedSyntaxList<ArgumentSyntax>, IEnumerable<ExpressionSyntax>>;
 
@@ -32,6 +33,24 @@ namespace BestPracticeChecker
             context.EnableConcurrentExecution();
             context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.None);
             context.RegisterSyntaxNodeAction(AnalyzeNode, SyntaxKind.InvocationExpression);
+            context.RegisterOperationAction(AnalyzeEqualOperation, OperationKind.BinaryOperator);
+        }
+
+        private void AnalyzeEqualOperation(OperationAnalysisContext context)
+        {
+            var operation = (IBinaryOperation)context.Operation;
+            
+            if (operation.OperatorKind != BinaryOperatorKind.Equals &&
+                operation.OperatorKind != BinaryOperatorKind.NotEquals)
+                return;
+
+            if ("System".Equals(operation.LeftOperand.Type.ContainingNamespace.ToString()) &&
+                "String".Equals(operation.LeftOperand.Type.Name) &&
+                "System".Equals(operation.RightOperand.Type.ContainingNamespace.ToString()) &&
+                "String".Equals(operation.RightOperand.Type.Name))
+            {
+                context.ReportDiagnostic(Diagnostic.Create(Rule, operation.Syntax.GetLocation())); 
+            }
         }
 
         private void AnalyzeNode(SyntaxNodeAnalysisContext context)
@@ -47,25 +66,15 @@ namespace BestPracticeChecker
             
             if (!methods.Any(m => m.Equals(methodSymbol)))
                 return;
+                    
+            var ordinalStringComparisonSearchResult = OrdinalStringComparisonSearch
+                .Create()
+                .WithArgumentList(invocationExpression.ArgumentList)
+                .Search();
 
-            if (Symbol.From("System", "String", "Equals").Equals(methodSymbol) &&
-                invocationExpression.ArgumentList.Arguments.Count == 2)
+            if (!ordinalStringComparisonSearchResult.Any) 
                 return;
 
-            // method signature using three arguments ==> Overload Equal wir StringComparison
-            if (invocationExpression.ArgumentList.Arguments.Count == 3)
-            {
-                var allowedComparisons = new List<string>()
-                {
-                    "StringComparison.Ordinal",
-                    "StringComparison.OrdinalIgnoreCase"
-                };
-                
-                if (allowedComparisons.Any(a => 
-                    a.Equals(invocationExpression.ArgumentList.Arguments[2].Expression.GetText().ToString())))
-                    return;
-            }
-            
             context.ReportDiagnostic(Diagnostic.Create(Rule, invocationExpression.GetLocation()));
         }
     }

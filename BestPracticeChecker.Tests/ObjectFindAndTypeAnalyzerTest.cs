@@ -5,7 +5,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-    public class ObjectFindAndTypeAnalyzerTest : BaseDiagnosticVerifierTest<ObjectFindAndTypeAnalyzer>
+    public class ObjectFindAndTypeAnalyzerTest : DiagnosticVerifier<ObjectFindAndTypeAnalyzer>
     {     
         [Fact]
         public async Task GameObjectFindHighlightedInStart

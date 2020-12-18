@@ -126,6 +126,9 @@
   <data name="CategoryTypeSafety" xml:space="preserve">
     <value>Type Safety</value>
   </data>
+  <data name="CategoryCodeStyle" xml:space="preserve">
+    <value>Code Style</value>
+  </data>
   <data name="ConditionalDebugTitle" xml:space="preserve">
     <value>Conditional Debug</value>
   </data>
@@ -173,5 +176,17 @@
   </data>
   <data name="ObjectFindAndTypeTitle" xml:space="preserve">
     <value>Methods to avoid</value>
+  </data>
+  <data name="SmallClassesMessageFormat" xml:space="preserve">
+    <value>Klassen sollten klein gehalten werden (weniger als 100 Zeilen).</value>
+  </data>
+  <data name="SmallClassesTitle" xml:space="preserve">
+    <value>Use smalll classes</value>
+  </data>
+  <data name="StringReferencesMessageFormat" xml:space="preserve">
+    <value>Es sollten keine String Referenzen für Methodenaufrufe verwendet werden.</value>
+  </data>
+  <data name="StringReferencesTitle" xml:space="preserve">
+    <value>Avoid string references</value>
   </data>
 </root>

@@ -6,7 +6,7 @@ using Xunit;
 
 namespace BestPracticeChecker.Tests
 {
-	public class ConstTagsAnalyzerTest : BaseDiagnosticVerifierTest<ConstTagsAnalyzer>
+	public class ConstTagsAnalyzerTest : DiagnosticVerifier<ConstTagsAnalyzer>
 	{
 
 		[Fact]

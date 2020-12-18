@@ -20,6 +20,7 @@ namespace BestPracticeChecker.Resources
             public static readonly string Performance = Strings.CategoryPerformance;
             public static readonly string Correctness = Strings.CategoryCorrectness;
             public static readonly string TypeSafety = Strings.CategoryTypeSafety;
+            public static readonly string CodeStyle = Strings.CategoryCodeStyle;
         }
     }
 }

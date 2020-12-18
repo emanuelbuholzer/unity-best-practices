@@ -19,11 +19,15 @@ Vermeide das Verwenden von werttypisierten Werten als Übergabeparameter an obje
 
 ## When to suppress warnings
 
+Grundsätzlich kann diese Diagnostic unterdrückt werden, jedoch kann es bei vielen Verstössen negative Auswirkungen auf die Perfomance des Games haben.
+
 ## Example of a violation
 
 In nachfolgendem sehr einfach gehaltenem Beispiel wird die der int-Wert x geboxt und dann als Argument der objekttypisierten Methode `object.equals` zum Vergleich übergeben.
 
 ### Description
+
+Die primiten Wertetypen `j1` und `j2` werden der Collection übergeben, indem die Methode `Add` aufgerufe wird. Diese ist durch die Verwendung von Generics Verweistypsiert und es geschieht Boxing.
 
 ### Code
 
